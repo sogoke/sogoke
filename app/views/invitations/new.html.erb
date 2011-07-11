@@ -1,0 +1,18 @@
+<h3>申请邀请码</h3>
+<p>目前手工客并不对外开放注册, 但我们欢迎对网站感兴趣的朋友加入我们！</p>
+
+<%= form_for @invitation do |f| %>
+  <% @invitation.errors.full_messages.each do |m| %>
+  	<p><%= m%></p>
+  <% end -%>
+  <p><%= f.label "称呼" %><br />
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label "邮箱" %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label "简短介绍" %><br />
+  <%= f.text_field :description %></p>
+
+  <p><%= f.submit '提交' %></p>
+<% end -%>
