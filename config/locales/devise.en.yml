@@ -25,8 +25,8 @@ en:
       signed_in: '登录成功'
       signed_out: '成功退出'
     passwords:
-      send_instructions: '您很快将收到一封指导您如何个性密码的邮件。'
-      updated: '密码个性成功。已经登录。'
+      send_instructions: '您很快将收到一封指导您如何修改密码的邮件。'
+      updated: '密码修改成功。已经登录。'
       send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
     confirmations:
       send_instructions: '您很快将收到一封确认邮件。'
