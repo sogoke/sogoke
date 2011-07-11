@@ -4,37 +4,37 @@ en:
   errors:
     messages:
       expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
+      not_found: "没有找到相关信息"
+      already_confirmed: "帐号已经确认，请登录"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "发生了1个错误"
+        other: "发生了%{count}个错误："
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
+      already_authenticated: '登录成功。'
+      unauthenticated: '请先登录'
+      unconfirmed: '请先确认您的帐号'
       locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
+      invalid: '无效的邮箱或密码。'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      inactive: '你的帐号未曾激活。'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: '登录成功'
+      signed_out: '成功退出'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
+      send_instructions: '您很快将收到一封指导您如何个性密码的邮件。'
+      updated: '密码个性成功。已经登录。'
       send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
     confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      send_instructions: '您很快将收到一封确认邮件。'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      confirmed: '帐号得到确认，已经登录。'
     registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
-      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
+      signed_up: '欢迎！注册成功。'
+      inactive_signed_up: '注册成功！请您到您的邮箱去激活帐号。'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
     unlocks:
@@ -46,8 +46,8 @@ en:
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: '手工客注册确认信'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '手工客找回密码'
       unlock_instructions:
         subject: 'Unlock Instructions'

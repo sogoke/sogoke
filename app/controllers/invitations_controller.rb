@@ -6,7 +6,7 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new params[:invitation]
     if @invitation.save
-      redirect_to :action => :successful
+      render 'successful'
     else
       render 'new'
     end
@@ -19,9 +19,5 @@ class InvitationsController < ApplicationController
     rescue
       
     end
-  end
-  
-  def successful
-    @invitation = Invitation.last
   end
 end

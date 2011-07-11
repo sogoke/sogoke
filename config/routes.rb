@@ -3,8 +3,7 @@ SogokeInstance::Application.routes.draw do
   
   devise_for :users
   
-  match "invitations/successful" => "invitations#successful"
-  resources :invitations, :only => [:new, :create, :show]
+  resources :invitations, :only => [:show, :new, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
