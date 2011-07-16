@@ -1,0 +1,5 @@
+<%= form_tag send_invitations_to_friends_path, :method => :post do %>
+  <%= text_area_tag 'words_from_friend' %>
+  <%= text_area_tag 'friends_mails' %>
+  <%= submit_tag '邀请' %>
+<% end -%>

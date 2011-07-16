@@ -1,2 +1,6 @@
 <h3>主页</h3>
   <p>欢迎来到手工客！</p>
+
+<% if current_user && current_user.still_have_invitations_left %>
+  <p>您还可以邀请 <%= link_to current_user.invitations_left, send_invitations_to_friends_path %>个朋友入住手工客！</p>
+<% end -%>

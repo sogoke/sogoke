@@ -3,6 +3,7 @@ SogokeInstance::Application.routes.draw do
   
   devise_for :users
   
+  match "/send_invitations_to_friends" => "invitations#send_invitations_to_friends"
   resources :invitations, :only => [:show, :new, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
