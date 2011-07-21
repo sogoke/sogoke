@@ -1,7 +1,8 @@
 SogokeInstance::Application.routes.draw do
   root :to => "home#index"
   
-  devise_for :users
+  match "/users/inactive" => "users#inactive"
+  devise_for :users, :controllers => { :registrations => "registrations" }
   
   match "/send_invitations_to_friends" => "invitations#send_invitations_to_friends"
   resources :invitations, :only => [:show, :new, :create]

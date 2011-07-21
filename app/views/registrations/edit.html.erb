@@ -1,0 +1,20 @@
+<h2>更新密码</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label "密码" %> <i></i><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label "确认密码" %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label "当前密码" %> <i></i><br />
+  <%= f.password_field :current_password %></p>
+
+  <p><%= f.submit "更新" %></p>
+<% end %>
+
+<h3>注销帐号</h3>
+
+<p>不高兴？<%= link_to "注销帐号", registration_path(resource_name), :confirm => "你确认吗？", :method => :delete %>。</p>
