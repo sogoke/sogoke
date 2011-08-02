@@ -7,8 +7,6 @@ class InvitationMail < ActionMailer::Base
     mail(:to => @invitation.email) do |format|
       format.html { render 'site_invitation_mail' }
     end
-    
-    ses.send_email
   end
   
   def friend_invitation(record)
