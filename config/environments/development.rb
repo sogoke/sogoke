@@ -27,18 +27,5 @@ SogokeInstance::Application.configure do
   
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,  
-    :address            => 'smtp.gmail.com',
-    :port               => 587,
-    :tls                  => true,
-    :domain             => 'gmail.com', #you can also use google.com
-    :authentication     => :plain,
-    :user_name          => 'nihilism.z@gmail.com',
-    :password           => 'u8i9o0p_'
-  }
+  config.action_mailer.delivery_method = :amazon_ses
 end
