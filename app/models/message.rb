@@ -4,6 +4,7 @@ class Message
   field :sender_id
   field :receiver_id
   field :content
+  field :unread, type: Boolean, default: true
   
   attr_accessor :receiver_name
   
@@ -13,4 +14,6 @@ class Message
   
   belongs_to :sender, :class_name => "User", :foreign_key => "sender_id"
   belongs_to :receiver, :class_name => "User", :foreign_key => "receiver_id"
+  
+  scope :unread, where(:unread => true)
 end

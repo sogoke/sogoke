@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem "bson_ext", ">= 1.3.1"
 gem "mongoid", ">= 2.0.2"
 gem "aws-ses", :require => "aws/ses"
+gem "redis"
+gem "redis-store"
 
 # Devise for auth
 gem "devise", ">= 1.4.2"
