@@ -1,0 +1,27 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+cn:
+  hello: "世界你好"
+  
+  message:
+    nosuchuser: "不存在此用户"
+    yourself: "收件人不可为自己"
+    
+  mongoid:
+      errors:
+        models:
+          invitation:
+            attributes:
+              name:
+                blank: 昵称不可为空
+              email:
+                taken: 该邮箱已经申请过了
+                blank: 邮箱不可为空
+                invalid: 邮箱格式不对
+          message:
+            attributes:
+              title:
+                blank: 标题不可为空
+              content:
+                blank: 内容不可为空
