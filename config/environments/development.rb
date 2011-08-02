@@ -27,5 +27,5 @@ SogokeInstance::Application.configure do
   
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :amazon_ses
+  config.action_mailer.delivery_method = :ses
 end

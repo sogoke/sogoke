@@ -6,6 +6,8 @@ SogokeInstance::Application.routes.draw do
   
   match "/send_invitations_to_friends" => "invitations#send_invitations_to_friends"
   resources :invitations, :only => [:show, :new, :create]
+  
+  resources :messages, :only => [:index, :show, :new,:create, :destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

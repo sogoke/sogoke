@@ -6,8 +6,8 @@ class Invitation
   field :description
   field :words_from_friend
   
-  validates_presence_of :name, :email
-  validates_uniqueness_of :email, :case_sensitive => false
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   
   def self.send_invitations_to_friends(words_from_friend, friends_mails)
     friends_mails.split("\r\n").each do |mail|

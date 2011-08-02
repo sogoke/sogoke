@@ -43,7 +43,7 @@ SogokeInstance::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'www.sogoke.com' }
-  config.action_mailer.delivery_method = :amazon_sms
+  config.action_mailer.delivery_method = :ses
 
   # Enable threaded mode
   # config.threadsafe!
