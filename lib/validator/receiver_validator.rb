@@ -5,6 +5,8 @@ class ReceiverValidator < ActiveModel::EachValidator
       object.errors[attribute] << I18n.t("message.nosuchuser")
     elsif receiver.id == object.sender_id
       object.errors[attribute] << I18n.t("message.yourself")
+    elsif 
+      object.receiver_id = receiver.id
     end
   end
 end

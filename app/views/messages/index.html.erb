@@ -13,7 +13,7 @@
 <% @messages.each do |message| %>
   <tr>
     <td><%= message.title %></td>
-    <td><%= message.from %></td>
+    <td><%= message.sender.name %></td>
     <td><%= message.content %></td>
     <td><%= link_to 'Show', message %></td>
     <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>

@@ -2,11 +2,11 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @messages = current_user.messages.limit(10)
+    @messages = current_user.received_messages.limit(10)
   end
 
   def show
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.received_messages.find(params[:id])
   end
 
   def new
@@ -17,14 +17,14 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(params[:message])
     
     if @message.save
-      redirect_to :index
+      redirect_to :action => :index
     else
       render 'new'
     end
   end
 
   def destroy
-    @message = current_user.messages.find(params[:id])
+    @message = current_user.received_messages.find(params[:id])
     @message.destroy
   end
 end

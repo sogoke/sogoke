@@ -14,6 +14,7 @@ class User
   validates :email, presence: true, uniqueness: true, email_format: true
   
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
+  has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
   def still_have_invitations_left
     invitations_left != 0
