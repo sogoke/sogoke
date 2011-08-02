@@ -16,4 +16,8 @@ class Message
   belongs_to :receiver, :class_name => "User", :foreign_key => "receiver_id"
   
   scope :unread, where(:unread => true)
+  
+  def read!
+    update_attribute(:unread, false)
+  end
 end
