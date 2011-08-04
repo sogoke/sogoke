@@ -20,8 +20,6 @@ class User
     invitations_left != 0
   end
   
-  
-  
   protected
 
   def self.find_for_database_authentication(conditions)
