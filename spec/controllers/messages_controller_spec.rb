@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe MessagesController do
-  let(:current_user) {}
+  let(:messages) { [mock_model(Message), mock_model(Message)] }
+  let(:current_user) { mock_model(User) }
   
   describe "GET index" do
     it "assigns all messages as @messages" do

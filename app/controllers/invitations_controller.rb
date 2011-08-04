@@ -13,12 +13,7 @@ class InvitationsController < ApplicationController
   end
   
   def show
-    begin
-      Invitation.find(params[:id])
-      redirect_to new_user_registration_path
-    rescue
-      
-    end
+    redirect_to(new_user_registration_path) if Invitation.exists?(conditions: {id: params[:id]})
   end
   
   def send_invitations_to_friends
