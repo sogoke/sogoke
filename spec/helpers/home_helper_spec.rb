@@ -11,5 +11,11 @@ require 'spec_helper'
 #   end
 # end
 describe HomeHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "sogoke error message" do
+    let(:user) { mock_model( User, errors: { name: "can't be blank", email: "can't be blank"  } ) }
+    
+    it "displays error message" do
+      helper.sogoke_error_message(user).should == "can't be blankcan't be blank"
+    end
+  end
 end

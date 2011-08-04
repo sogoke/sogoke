@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe InvitationsController do
@@ -72,6 +73,25 @@ describe InvitationsController do
       Invitation.stub(:exists?).and_return(false)
       do_get
       response.should render_template(:show)
+    end
+  end
+  
+  describe "GET 'send_invitations_to_friends'" do
+    it "render send invitations to friends" do
+      get :send_invitations_to_friends
+      response.should render_template(:send_invitations_to_friends)
+    end    
+  end
+  
+  describe "POST 'send_invitations_to_friends'" do
+    before do
+      Invitation.stub!(:send_invitations_to_friends)
+    end
+    
+    it "sends emails to friends" do
+      Invitation.should_receive(:send_invitations_to_friends).with("Welcome to SOGOKE", "nihilism.z@gmail.com")
+      post :send_invitations_to_friends, words_from_friend: "Welcome to SOGOKE", friends_mails: "nihilism.z@gmail.com"
+      response.should redirect_to(root_path)
     end
   end
 end
