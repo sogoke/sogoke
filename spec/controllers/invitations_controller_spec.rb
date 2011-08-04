@@ -3,21 +3,25 @@ require 'spec_helper'
 describe InvitationsController do
   
   describe "GET 'new'" do
-    let(:invitation) { stub_model(Invitation) }
+    let(:invitation) { mock_model(Invitation) }
     
     before(:each) do
       Invitation.stub!(:new).and_return(invitation)
     end
     
     it "Invitation should receive new" do
-      Invitation.should receive(:new).and_return(invitation)
-      assigns(:invitation).should eq(invitation)
+      Invitation.should_receive(:new).and_return(invitation)
       get :new
     end
     
-    it "renders index html" do
+    it "@invitation should be the same as invitation" do
       get :new
-      response.should render_template(:index)
+      assigns(:invitation).should eq(invitation)
+    end
+    
+    it "renders new html" do
+      get :new
+      response.should render_template("new")
     end
   end
 end
