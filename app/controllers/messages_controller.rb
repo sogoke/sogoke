@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(params[:message])
     
     if @message.save
-      redirect_to :action => :index
+      redirect_to :action => :index, :notice => I18n.t("creation_successful")
     else
       render 'new'
     end
