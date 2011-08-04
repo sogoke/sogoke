@@ -9,5 +9,7 @@ describe Message do
     Message.new.should have(1).error_on(:content)
   end
 
-  it "should be wrong if receiver is invalid"
+  it "should be wrong if receiver is invalid" do
+    
+  end
 end
