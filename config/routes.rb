@@ -6,6 +6,20 @@ SogokeInstance::Application.routes.draw do
     get "inactive", :on => :collection
   end
   
+  scope "/users" do
+    resources :settings, :only => [] do
+      get "base", :on => :collection
+      get "notification", :on => :collection
+      get "binding", :on => :collection
+      get "store", :on => :collection
+      
+      put "base", :on => :collection
+      put "notification", :on => :collection
+      put "binding", :on => :collection
+      put "store", :on => :collection
+    end
+  end
+  
   resources :invitations, :only => [:show, :new, :create] do
     post "friends", :on => :collection
     get "friends", :on => :collection
