@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
     redirect_to(new_user_registration_path) if Invitation.exists?(conditions: {id: params[:id]})
   end
   
-  def send_invitations_to_friends
+  def friends
     if request.post?
       Invitation.send_invitations_to_friends(params[:words_from_friend], params[:friends_mails])
       redirect_to root_path, :notice => I18n.t("invite_friends_successful")

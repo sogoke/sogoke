@@ -76,10 +76,10 @@ describe InvitationsController do
     end
   end
   
-  describe "GET 'send_invitations_to_friends'" do
+  describe "GET 'friends'" do
     it "render send invitations to friends" do
-      get :send_invitations_to_friends
-      response.should render_template(:send_invitations_to_friends)
+      get :friends
+      response.should render_template(:friends)
     end    
   end
   
@@ -90,7 +90,7 @@ describe InvitationsController do
     
     it "sends emails to friends" do
       Invitation.should_receive(:send_invitations_to_friends).with("Welcome to SOGOKE", "nihilism.z@gmail.com")
-      post :send_invitations_to_friends, words_from_friend: "Welcome to SOGOKE", friends_mails: "nihilism.z@gmail.com"
+      post :friends, words_from_friend: "Welcome to SOGOKE", friends_mails: "nihilism.z@gmail.com"
       response.should redirect_to(root_path)
     end
   end

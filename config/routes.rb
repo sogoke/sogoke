@@ -1,11 +1,15 @@
 SogokeInstance::Application.routes.draw do
   root :to => "home#index"
   
-  match "/users/inactive" => "users#inactive"
   devise_for :users, :controllers => { :registrations => "registrations" }
+  resources :users, :only => [:show] do
+    get "inactive", :on => :collection
+  end
   
-  match "/send_invitations_to_friends" => "invitations#send_invitations_to_friends"
-  resources :invitations, :only => [:show, :new, :create]
+  resources :invitations, :only => [:show, :new, :create] do
+    post "friends", :on => :collection
+    get "friends", :on => :collection
+  end
   
   resources :messages, :only => [:index, :show, :new,:create, :destroy]
   # The priority is based upon order of creation:

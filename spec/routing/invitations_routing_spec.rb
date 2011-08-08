@@ -15,8 +15,12 @@ describe InvitationsController do
       post("/invitations").should route_to("invitations#create")
     end
 
-    it "routes to #send_invitations_to_friends" do
-      post("/send_invitations_to_friends").should route_to("invitations#send_invitations_to_friends")
+    it "routes to #friends" do
+      post("/invitations/friends").should route_to("invitations#friends")
+    end
+    
+    it "routes to #friends" do
+      get("/invitations/friends").should route_to("invitations#friends")
     end
   end
 end
