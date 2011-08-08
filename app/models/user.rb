@@ -9,6 +9,10 @@ class User
   field :name
   field :email
   field :invitations_left, type: Integer, default: 5
+  field :gender
+  field :website
+  field :signature
+  field :aboutme
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, email_format: true

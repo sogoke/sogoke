@@ -8,15 +8,17 @@ SogokeInstance::Application.routes.draw do
   
   scope "/users" do
     resources :settings, :only => [] do
-      get "base", :on => :collection
-      get "notification", :on => :collection
-      get "binding", :on => :collection
-      get "store", :on => :collection
-      
-      put "base", :on => :collection
-      put "notification", :on => :collection
-      put "binding", :on => :collection
-      put "store", :on => :collection
+      collection do
+        get "base"
+        get "notification"
+        get "binding"
+        get "store"
+
+        put "base"
+        put "notification"
+        put "binding"
+        put "store"
+      end
     end
   end
   

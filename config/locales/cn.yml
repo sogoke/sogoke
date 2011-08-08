@@ -4,6 +4,16 @@
 cn:
   invite_friends_successful: "邀请朋友成功"
   
+  setting:
+    base:
+      successful: "基本资料更新成功"
+    notification:
+      successful: "通知偏好设置成功"
+    binding:
+      successful: "帐号绑定成功"
+    store:
+      successful: "店铺设置成功"
+  
   message:
     nosuchuser: "不存在此用户"
     yourself: "收件人不可为自己"
