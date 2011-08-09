@@ -17,9 +17,9 @@ describe SettingsController do
     it "should receive update_attributes" do
       controller.current_user.should_receive(:update_attributes).with({"gender" => "male"}).and_return(true)
       
-      put :base, :users => {"gender" => "male"}
+      put :base, :user => {"gender" => "male"}
       
-      flash[:notice].should eq(I18n.t("settings.base.successful"))
+      flash[:notice].should eq(I18n.t("setting.base.successful"))
       
       response.should render_template(:base)
     end

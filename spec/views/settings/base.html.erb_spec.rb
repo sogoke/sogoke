@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe "settings/base.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "contains a form" do
+    view.stub!(:current_user).and_return(mock_model(User, email: "faker@gmail.com", gender: "male", signature: "", aboutme: "", website: "" ))
+
+    render :template => "/settings/base.html.erb"
+
+    rendered.should =~ /\/users\/settings\/base/
+    rendered.should =~ /value="put"/
+  end
 end
