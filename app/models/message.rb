@@ -1,12 +1,13 @@
 class Message
   include Mongoid::Document
+  
+  attr_accessor :receiver_name
+  
   field :title
   field :sender_id
   field :receiver_id
   field :content
   field :unread, type: Boolean, default: true
-  
-  attr_accessor :receiver_name
   
   validates :title, presence: true
   validates :content, presence: true

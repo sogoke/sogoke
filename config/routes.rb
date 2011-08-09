@@ -22,6 +22,8 @@ SogokeInstance::Application.routes.draw do
     end
   end
   
+  resources :categories
+  
   resources :invitations, :only => [:show, :new, :create] do
     post "friends", :on => :collection
     get "friends", :on => :collection

@@ -13,6 +13,7 @@ class User
   field :website
   field :signature
   field :aboutme
+  key :name
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, email_format: true
@@ -21,7 +22,7 @@ class User
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
   def still_have_invitations_left
-    invitations_left != 0
+    !invitations_left.zero?
   end
   
   protected
