@@ -15,7 +15,7 @@ describe HomeHelper do
     let(:user) { mock_model( User, errors: { name: "can't be blank", email: "can't be blank"  } ) }
     
     it "displays error message" do
-      helper.sogoke_error_message(user).should == "can't be blankcan't be blank"
+      helper.sogoke_error_message(user).should == "<li>can't be blank</li><li>can't be blank</li>"
     end
   end
 end

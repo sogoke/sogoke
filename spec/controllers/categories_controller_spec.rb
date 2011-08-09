@@ -23,23 +23,27 @@ describe CategoriesController do
   # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
 
   describe "GET index" do
-    it "assigns all categories as @categories" do
-      category = Category.create! valid_attributes
-      get :index
-      assigns(:categories).should eq([category])
+    let(:categories) { [mock_model(Category)] }
+    
+    before do
+      Category.stub!(:roots).and_return(categories)
     end
-  end
-
-  describe "GET show" do
-    it "assigns the requested category as @category" do
-      category = Category.create! valid_attributes
-      get :show, :id => category.id.to_s
-      assigns(:category).should eq(category)
+    
+    it "should receive all" do
+      Category.should_receive(:roots).and_return(categories)
+      get :index
+    end
+    
+    it "assigns all categories as @categories" do
+      get :index
+      assigns(:categories).should eq(categories)
+    end
+    
+    it "should render index" do
+      get :index
+      response.should render_template(:index)
     end
   end
 
@@ -48,46 +52,61 @@ describe CategoriesController do
       get :new
       assigns(:category).should be_a_new(Category)
     end
+    
+    it "renders new" do
+      get :new
+      response.should render_template(:new)
+    end
   end
 
   describe "GET edit" do
+    let(:category) { mock_model(Category, :id => 5) }
+    
+    before do
+      Category.stub!(:find).and_return(category)
+    end
+    
     it "assigns the requested category as @category" do
-      category = Category.create! valid_attributes
-      get :edit, :id => category.id.to_s
-      assigns(:category).should eq(category)
+      Category.should_receive(:find).with(5).and_return(category)
+      get :edit, :id => 5
+      
+      assigns(:category).id.should eq(5)
+      response.should render_template(:edit)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Category" do
-        expect {
-          post :create, :category => valid_attributes
-        }.to change(Category, :count).by(1)
+      let(:category) { mock_model(Category, save: true, name: "Wood") }
+      
+      before(:each) do
+        Category.stub!(:new).and_return(category)
       end
 
       it "assigns a newly created category as @category" do
-        post :create, :category => valid_attributes
-        assigns(:category).should be_a(Category)
-        assigns(:category).should be_persisted
+        Category.should_receive(:new).with("name" => "Wood", "parent_id" => "blablablabla").and_return(category)
+        post :create, :category => { name: "Wood", parent_id: "blablablabla" }
+      end
+      
+      it "@category should be right" do
+        post :create, :category => { name: "Wood", parent_id: "blablablabla" }
+        assigns(:category).name.should eq("Wood")
       end
 
       it "redirects to the created category" do
-        post :create, :category => valid_attributes
-        response.should redirect_to(Category.last)
+        post :create
+        response.should redirect_to(categories_path)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved category as @category" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Category.any_instance.stub(:save).and_return(false)
         post :create, :category => {}
         assigns(:category).should be_a_new(Category)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
         Category.any_instance.stub(:save).and_return(false)
         post :create, :category => {}
         response.should render_template("new")

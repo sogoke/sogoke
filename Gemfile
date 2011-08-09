@@ -10,7 +10,8 @@ gem 'jquery-rails'
 
 # Mongoid for database orm
 gem "bson_ext", ">= 1.3.1"
-gem "mongoid", ">= 2.0.2"
+gem "mongoid", ">= 2.1.2"
+gem "mongoid_acts_as_tree"
 gem "aws-ses", :require => "aws/ses"
 gem "redis"
 gem "redis-store"

@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
+	<th></th>
     <th></th>
     <th></th>
   </tr>
@@ -11,10 +11,18 @@
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.name %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, confirm: 'Are you sure?', method: :delete %></td>
+	<td>&nbsp;</td>
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, confirm: "确认删除？", method: :delete %></td>
   </tr>
+  <% category.descendants.each do |child| %>
+  <tr>
+  	<td></td>
+	<td><%= child.name %></td>
+	<td><%= link_to "编辑", edit_category_path(child) %></td>
+	<td><%= link_to	"删除", category, confirm: "确认删除？", method: :delete %></td>
+  </tr>
+  <% end -%>
 <% end %>
 </table>
 

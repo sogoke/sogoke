@@ -71,12 +71,17 @@ GEM
       factory_girl (~> 2.0.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    git (1.2.5)
     guard (0.5.1)
       thor (~> 0.14.6)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
     hike (1.2.0)
     i18n (0.6.0)
+    jeweler (1.6.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
     jquery-rails (1.0.12)
       railties (~> 3.0)
       thor (~> 0.14)
@@ -97,6 +102,14 @@ GEM
     mongoid-rspec (1.4.4)
       mongoid (~> 2.0)
       rspec (~> 2)
+    mongoid_acts_as_tree (0.1.8)
+      bson (>= 0.20.1)
+      bson
+      bson_ext
+      jeweler
+      mongoid
+      mongoid (>= 2.0.0)
+      shoulda
     multi_json (1.0.3)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
@@ -155,6 +168,7 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    shoulda (2.11.3)
     sprockets (2.0.0.beta.12)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -192,8 +206,9 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   launchy (>= 0.4.0)
-  mongoid (>= 2.0.2)
+  mongoid (>= 2.1.2)
   mongoid-rspec (>= 1.4.4)
+  mongoid_acts_as_tree
   rails (= 3.1.0.rc4)
   redis
   redis-store
