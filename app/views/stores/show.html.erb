@@ -9,3 +9,8 @@
   <b>Announcement:</b>
   <%= @store.announcement %>
 </p>
+<%=  render 'favorite' %>
+<p>商品：</p>
+<% @store.products.each do |p| %>
+	<%= link_to p.name, product_path(p) %>
+<% end -%>

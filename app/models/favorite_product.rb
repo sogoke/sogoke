@@ -1,0 +1,3 @@
+class FavoriteProduct < Favorite
+  
+end

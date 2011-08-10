@@ -19,11 +19,17 @@ class User
   validates :email, presence: true, uniqueness: true, email_format: true
   
   has_one :store
+  has_many :favorite_stores, :class_name => "FavoriteStore"
+  has_many :favorite_products, :class_name => "FavoriteProduct"
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
   def still_have_invitations_left
     !invitations_left.zero?
+  end
+  
+  def favorite_of?(something)
+    !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).count.zero?
   end
   
   protected

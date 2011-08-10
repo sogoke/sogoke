@@ -12,4 +12,6 @@ describe User do
   it "should be wrong if email is invalid" do
     User.new(:email => "fakel.com").should have(2).errors_on(:email)
   end
+  
+  it "favorites_of should be right"
 end

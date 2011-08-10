@@ -1,0 +1,3 @@
+class FavoriteStore < Favorite
+  
+end
