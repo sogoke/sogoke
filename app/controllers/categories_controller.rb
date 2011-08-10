@@ -20,20 +20,14 @@ class CategoriesController < ApplicationController
       render action: "new"
     end
   end
-
-  # PUT /categories/1
-  # PUT /categories/1.json
+  
   def update
     @category = Category.find(params[:id])
 
-    respond_to do |format|
-      if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.update_attributes(params[:category])
+      redirect_to categories_path, notice: 'Category was successfully updated.'
+    else
+      render action: "edit"
     end
   end
   
