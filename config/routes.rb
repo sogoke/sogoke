@@ -1,9 +1,17 @@
 SogokeInstance::Application.routes.draw do
+  get "favorites/stores"
+
+  get "favorites/products"
+
   root :to => "home#index"
   
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :only => [:show] do
     get "inactive", :on => :collection
+    resource "favorites", :only => [], :on => :member do
+      get "products", :on => :collection
+      get "stores", :on => :collection
+    end
   end
   
   scope "/users" do

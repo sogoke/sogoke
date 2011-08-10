@@ -13,7 +13,6 @@ class User
   field :website
   field :signature
   field :aboutme
-  key :name
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, email_format: true

@@ -5,7 +5,7 @@ class Favorite
   field :favorite_id
   
   validates :user_id, presence: true
-  validates :favorite_id, presence: true, uniqueness: {scope: "user_id"}
+  validates :favorite_id, presence: true  
   
   belongs_to :user
 end

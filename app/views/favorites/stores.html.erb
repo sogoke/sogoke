@@ -1,0 +1,7 @@
+<%= render 'tab' %>
+
+<h1><%= @user.name%>喜爱的店铺</h1>
+
+<% @user.favorite_stores.each do |f| %>
+	<p><%= link_to f.store.name, store_path(f.store) %> 取消</p>
+<% end -%>
