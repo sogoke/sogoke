@@ -18,6 +18,7 @@ class User
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, email_format: true
   
+  has_many :products
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
