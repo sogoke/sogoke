@@ -29,7 +29,7 @@ describe SettingsController do
       
       controller.current_user.should_receive(:update_attributes).with({"gender" => "male"}).and_return(false)
       
-      put :base, :users => {"gender" => "male"}
+      put :base, :user => {"gender" => "male"}
       
       flash[:notice].should eq(nil)
       
@@ -50,12 +50,4 @@ describe SettingsController do
       response.should render_template("binding")
     end
   end
-
-  describe "GET 'store'" do
-    it "should be successful" do
-      get 'store'
-      response.should render_template("store")
-    end
-  end
-
 end

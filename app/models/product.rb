@@ -6,7 +6,7 @@ class Product
   field :price, :type => Float
   field :sales_link
   field :sales_description
-  field :user_id
+  field :store_id
   
-  belongs_to :user
+  belongs_to :store
 end

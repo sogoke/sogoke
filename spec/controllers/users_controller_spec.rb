@@ -9,9 +9,6 @@ describe UsersController do
   end
   
   describe "User 'show'" do
-    it "render show" do
-      get :show, :id => 1
-      response.should render_template(:show)
-    end
+    pending "render show"
   end
 end

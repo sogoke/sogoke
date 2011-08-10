@@ -1,0 +1,20 @@
+<%= form_for(current_store) do |f| %>
+  <% if current_store.errors.any? %>
+    <div>
+      <ul><%= sogoke_error_message(current_store) %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :announcement %><br />
+    <%= f.text_field :announcement %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe "Messages" do
+describe "Stores" do
 end

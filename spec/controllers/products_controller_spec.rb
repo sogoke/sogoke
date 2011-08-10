@@ -3,11 +3,11 @@ describe ProductsController do
 
   describe "GET index" do
     let(:products) { [ mock_model(Product), mock_model(Product) ] }
-    let(:current_user) { mock_model(User) }
+    let(:current_store) { mock_model(Store) }
     
     before do
-      controller.stub!(:current_user).and_return(current_user)
-      current_user.stub_chain(:products, :all).and_return(products)
+      controller.stub!(:current_store).and_return(current_store)
+      current_store.stub_chain(:products, :all).and_return(products)
     end
     
     it "assigns all products as @products" do
@@ -32,11 +32,11 @@ describe ProductsController do
 
   describe "GET new" do
     let(:product) { mock_model(Product) }
-    let(:current_user) { mock_model(User) }
+    let(:current_store) { mock_model(Store) }
     
     before do
-      controller.stub!(:current_user).and_return(current_user)
-      current_user.stub_chain(:products, :new).and_return(product)
+      controller.stub!(:current_store).and_return(current_store)
+      current_store.stub_chain(:products, :new).and_return(product)
     end
     
     it "assigns a new product as @product" do
@@ -48,11 +48,11 @@ describe ProductsController do
 
   describe "GET edit" do
     let(:product) { mock_model(Product, id: 5) }
-    let(:current_user) { mock_model(User) }
+    let(:current_store) { mock_model(Store) }
     
     before do
-      controller.stub!(:current_user).and_return(current_user)
-      current_user.stub_chain(:products, :find).and_return(product)
+      controller.stub!(:current_store).and_return(current_store)
+      current_store.stub_chain(:products, :find).and_return(product)
     end
     
     it "assigns the requested product as @product" do
@@ -68,11 +68,11 @@ describe ProductsController do
   describe "POST create" do
     describe "with valid params" do
       let(:product) { mock_model(Product, id: 5, save: true) }
-      let(:current_user) { mock_model(User) }
+      let(:current_store) { mock_model(Store) }
 
       before do
-        controller.stub!(:current_user).and_return(current_user)
-        current_user.stub_chain(:products, :new).and_return(product)
+        controller.stub!(:current_store).and_return(current_store)
+        current_store.stub_chain(:products, :new).and_return(product)
       end
       
       it "assigns a newly created product as @product" do
@@ -89,11 +89,11 @@ describe ProductsController do
 
     describe "with invalid params" do
       let(:product) { mock_model(Product, id: 5, save: false) }
-      let(:current_user) { mock_model(User) }
+      let(:current_store) { mock_model(Store) }
 
       before do
-        controller.stub!(:current_user).and_return(current_user)
-        current_user.stub_chain(:products, :new).and_return(product)
+        controller.stub!(:current_store).and_return(current_store)
+        current_store.stub_chain(:products, :new).and_return(product)
       end
 
       it "re-renders the 'new' template" do
@@ -106,11 +106,11 @@ describe ProductsController do
   describe "PUT update" do
     describe "with valid params" do
       let(:product) { mock_model(Product, id: 5, update_attributes: true) }
-      let(:current_user) { mock_model(User) }
+      let(:current_store) { mock_model(Store) }
 
       before do
-        controller.stub!(:current_user).and_return(current_user)
-        current_user.stub_chain(:products, :find).and_return(product)
+        controller.stub!(:current_store).and_return(current_store)
+        current_store.stub_chain(:products, :find).and_return(product)
       end
       
       it "updates the requested product" do
@@ -131,11 +131,11 @@ describe ProductsController do
 
     describe "with invalid params" do
       let(:product) { mock_model(Product, id: 5, update_attributes: false) }
-      let(:current_user) { mock_model(User) }
+      let(:current_store) { mock_model(Store) }
 
       before do
-        controller.stub!(:current_user).and_return(current_user)
-        current_user.stub_chain(:products, :find).and_return(product)
+        controller.stub!(:current_store).and_return(current_store)
+        current_store.stub_chain(:products, :find).and_return(product)
       end
       
       it "assigns the product as @product" do

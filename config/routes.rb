@@ -12,16 +12,15 @@ SogokeInstance::Application.routes.draw do
         get "base"
         get "notification"
         get "binding"
-        get "store"
 
         put "base"
         put "notification"
         put "binding"
-        put "store"
       end
     end
   end
   
+  resources :stores, :only => [:show, :edit, :update]
   resources :categories
   resources :products
   

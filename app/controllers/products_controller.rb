@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   #before_filter :authenticate_user!
   
   def index
-    @products = current_user.products.all
+    @products = current_store.products.all
   end
 
   def show
@@ -10,15 +10,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = current_user.products.new
+    @product = current_store.products.new
   end
 
   def edit
-    @product = current_user.products.find(params[:id])
+    @product = current_store.products.find(params[:id])
   end
 
   def create
-    @product = current_user.products.new(params[:product])
+    @product = current_store.products.new(params[:product])
 
     if @product.save
       redirect_to products_path, notice: 'Product was successfully created.'
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = current_user.products.find(params[:id])
+    @product = current_store.products.find(params[:id])
 
     if @product.update_attributes(params[:product])
       redirect_to @product, notice: 'Product was successfully updated.'

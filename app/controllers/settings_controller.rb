@@ -11,9 +11,6 @@ class SettingsController < ApplicationController
   def binding
   end
 
-  def store
-  end
-
   protected
   
   def not_put

@@ -14,9 +14,5 @@ describe SettingsController do
     it "routes to #binding" do
       get("/users/settings/binding").should route_to("settings#binding")
     end
-    
-    it "routes to #store" do
-      get("/users/settings/store").should route_to("settings#store")
-    end
   end
 end
