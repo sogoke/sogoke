@@ -5,4 +5,6 @@
   <p>您还可以邀请 <%= link_to current_user.invitations_left, friends_invitations_path %>个朋友入住手工客！</p>
 <% end -%>
 
+<% if current_user %>
 <%= link_to "喜欢", products_user_favorites_path(current_user) %>
+<% end -%>
