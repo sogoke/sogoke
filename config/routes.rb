@@ -4,6 +4,7 @@ SogokeInstance::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :only => [:show] do
     get "inactive", :on => :collection
+    resources :articles
     resource "favorites", :only => [], :on => :member do
       get "products", :on => :collection
       get "stores", :on => :collection
