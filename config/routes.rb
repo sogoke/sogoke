@@ -1,26 +1,26 @@
-SogokeInstance::Application.routes.draw do
+Sogoke::Application.routes.draw do
   root :to => "home#index"
   
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :only => [:show] do
-    get "inactive", :on => :collection
-    resources "articles", :only => :index, :on => :member
-    resource "favorites", :only => [], :on => :member do
-      get "products"
-      get "stores"
+    get :inactive, :on => :collection
+    resources :articles, :only => :index, :on => :member
+    resource :favorites, :only => [], :on => :member do
+      get :products
+      get :stores
     end
   end
   
   scope "/users" do
     resources :settings, :only => [] do
       collection do
-        get "base"
-        get "notification"
-        get "binding"
+        get :base
+        get :notification
+        get :binding
 
-        put "base"
-        put "notification"
-        put "binding"
+        put :base
+        put :notification
+        put :binding
       end
     end
   end
@@ -32,8 +32,8 @@ SogokeInstance::Application.routes.draw do
   
   resources :invitations, :only => [:show, :new, :create] do
     collection do
-      post "friends"
-      get "friends"
+      post :friends
+      get :friends
     end
   end
   

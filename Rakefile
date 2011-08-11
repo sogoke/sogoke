@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-SogokeInstance::Application.load_tasks
+Sogoke::Application.load_tasks
