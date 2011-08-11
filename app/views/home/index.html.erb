@@ -6,5 +6,6 @@
 <% end -%>
 
 <% if current_user %>
+<%= link_to "博文", user_articles_path(current_user) %>
 <%= link_to "喜欢", products_user_favorites_path(current_user) %>
 <% end -%>

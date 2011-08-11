@@ -4,7 +4,7 @@ describe ArticlesController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/articles").should route_to("articles#index")
+      get("/users/1/articles").should route_to("articles#index", :user_id => "1")
     end
 
     it "routes to #new" do

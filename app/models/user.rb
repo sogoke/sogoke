@@ -18,6 +18,7 @@ class User
   validates :email, presence: true, uniqueness: true, email_format: true
   
   has_one :store
+  has_many :articles
   has_many :favorite_stores, :class_name => "FavoriteStore"
   has_many :favorite_products, :class_name => "FavoriteProduct"
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"

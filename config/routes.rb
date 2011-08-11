@@ -4,10 +4,10 @@ SogokeInstance::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, :only => [:show] do
     get "inactive", :on => :collection
-    resources :articles
+    resources "articles", :only => :index, :on => :member
     resource "favorites", :only => [], :on => :member do
-      get "products", :on => :collection
-      get "stores", :on => :collection
+      get "products"
+      get "stores"
     end
   end
   
@@ -28,13 +28,16 @@ SogokeInstance::Application.routes.draw do
   resources :stores, :only => [:show, :edit, :update]
   resources :categories
   resources :products
+  resources :articles, :except => :index
   
   resources :invitations, :only => [:show, :new, :create] do
-    post "friends", :on => :collection
-    get "friends", :on => :collection
+    collection do
+      post "friends"
+      get "friends"
+    end
   end
   
-  resources :messages, :only => [:index, :show, :new,:create, :destroy]
+  resources :messages, :except => [:update, :edit]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
