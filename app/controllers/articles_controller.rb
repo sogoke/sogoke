@@ -36,13 +36,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-#  def destroy
-#    @article = current_user.articles.find(params[:id])
-#    @article.destroy
-
-#    respond_to do |format|
-#      format.html { redirect_to articles_url }
-#      format.json { head :ok }
-#    end
-#  end
+  def destroy
+    @article = current_user.articles.find(params[:id])
+    @article.destroy
+    
+    redirect_to user_articles_path(current_user), notice: "Article was successfully deleted."
+  end
 end

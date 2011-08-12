@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 # Default Rails gems
-gem 'rails', '3.1.0.rc4'
+gem 'rails', '3.1.0.rc5'
 
 # CSS and JavaScript gems
 gem 'sass-rails', "~> 3.1.0.rc"
@@ -14,7 +14,7 @@ gem "mongoid", ">= 2.1.2"
 gem "mongoid_acts_as_tree"
 gem "aws-ses", :require => "aws/ses"
 gem "redis"
-gem "redis-store"
+gem "redis-store", ">= 1.0.0.rc1"
 
 # Devise for auth
 gem "devise", ">= 1.4.2"

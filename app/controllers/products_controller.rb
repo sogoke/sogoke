@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
   
   def index
     @products = current_store.products.all
@@ -37,13 +37,9 @@ class ProductsController < ApplicationController
     end
   end
 
-#  def destroy
-#    @product = Product.find(params[:id])
-#    @product.destroy
+  def destroy
+    @product = current_store.products.find(params[:id])
+    @product.destroy
 
-#    respond_to do |format|
-#     format.html { redirect_to products_url }
-#      format.json { head :ok }
-#    end
-#  end
+    redirect_to products_path, notice: "Product was successfully deleted."
 end
