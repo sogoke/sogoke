@@ -29,6 +29,7 @@ Sogoke::Application.routes.draw do
   resources :categories
   resources :products
   resources :articles, :except => :index
+  resources :tags
   
   resources :invitations, :only => [:show, :new, :create] do
     collection do
