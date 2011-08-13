@@ -8,5 +8,7 @@ class Product
   field :sales_description
   field :store_id
   
+  validates :name, presence: true
+  
   belongs_to :store
 end

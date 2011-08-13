@@ -24,6 +24,12 @@ cn:
   mongoid:
       errors:
         models:
+          article:
+            attributes:
+              title:
+                blank: "标题不可为空"
+              content:
+                blank: "内容不可为空"
           user:
             attributes:
               name:

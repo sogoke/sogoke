@@ -25,6 +25,9 @@ gem "devise", ">= 1.4.2"
 # Using thin server
 gem "thin"
 
+#Validation
+gem 'client_side_validations'
+
 # Gems for test
 gem "rspec-rails", ">= 2.6.1", :group => [:development, :test]
 group :test do
