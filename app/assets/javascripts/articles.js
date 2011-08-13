@@ -1,0 +1,1 @@
+$("#article_tags").tagsInput();

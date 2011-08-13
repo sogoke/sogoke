@@ -19,7 +19,7 @@ describe ArticlesController do
     let(:article) { mock_model(Article, id: 5) }
     
     it "assigns the requested article as @article" do
-      Article.should_receive(:find).with(5).and_return(article)
+      Article.should_receive(:find).with("5").and_return(article)
       
       get :show, :id => article.id
       assigns(:article).should eq(article)

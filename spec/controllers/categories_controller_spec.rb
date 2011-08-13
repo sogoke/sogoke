@@ -67,7 +67,7 @@ describe CategoriesController do
     end
     
     it "assigns the requested category as @category" do
-      Category.should_receive(:find).with(5).and_return(category)
+      Category.should_receive(:find).with("5").and_return(category)
       get :edit, :id => 5
       
       assigns(:category).id.should eq(5)

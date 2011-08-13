@@ -6,7 +6,7 @@ describe FavoritesController do
     it "should be successful" do
       User.stub!(:find).and_return(mock_model(User))
       
-      User.should_receive(:find).with(5)
+      User.should_receive(:find).with("5")
       
       get 'stores', :user_id => 5
       
@@ -18,7 +18,7 @@ describe FavoritesController do
     it "should be successful" do
       User.stub!(:find).and_return(mock_model(User))
       
-      User.should_receive(:find).with(5)
+      User.should_receive(:find).with("5")
       
       get 'products', :user_id => 5
       

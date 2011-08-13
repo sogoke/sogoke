@@ -10,7 +10,7 @@ describe StoresController do
     end
         
     it "assigns the requested store as @store" do
-      Store.should_receive(:find).with(5).and_return(store)
+      Store.should_receive(:find).with("5").and_return(store)
       
       get :show, :id => store.id
       

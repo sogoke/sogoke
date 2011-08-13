@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   
   def index
     @products = current_store.products.all
@@ -42,4 +42,5 @@ class ProductsController < ApplicationController
     @product.destroy
 
     redirect_to products_path, notice: "Product was successfully deleted."
+  end
 end

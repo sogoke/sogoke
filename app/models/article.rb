@@ -1,5 +1,6 @@
 class Article
   include Mongoid::Document
+  include Mongoid::Taggable
   
   field :title
   field :content

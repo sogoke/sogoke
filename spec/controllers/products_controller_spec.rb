@@ -21,7 +21,7 @@ describe ProductsController do
     let(:product) { mock_model(Product, id: 5) }
     
     it "assigns the requested product as @product" do
-      Product.should_receive(:find).with(5).and_return(product)
+      Product.should_receive(:find).with("5").and_return(product)
       
       get :show, :id => product.id
       assigns(:product).should eq(product)
