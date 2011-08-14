@@ -35,6 +35,7 @@ Sogoke::Application.routes.draw do
   resources :articles, :except => :index do
     resources :comments, :only => [:create, :destroy]
   end
+  resources :favorites, :only => [:create, :destroy]
   
   resources :invitations, :only => [:show, :new, :create] do
     collection do

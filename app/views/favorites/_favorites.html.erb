@@ -1,5 +1,5 @@
 <% if current_user.favorite_of?(sogoke) %>
-	取消喜欢
+	<%= link_to '取消喜欢', "javascript:void(0);", :id => "unlike", :"data-id" => current_user.favorite(sogoke).id, :"data-token" => sogoke.class.to_s.downcase %>
 <% else %>
-    喜欢
+    <%= link_to '喜欢', "javascript:void(0);", :id => "like", :"data-id" => sogoke.id, :"data-token" => sogoke.class.to_s.downcase %>
 <% end -%>

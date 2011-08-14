@@ -35,6 +35,10 @@ class User
     !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).count.zero?
   end
   
+  def favorite(something)
+    send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).first
+  end
+  
   protected
 
   def self.find_for_database_authentication(conditions)
