@@ -8,14 +8,15 @@ class FavoritesController < ApplicationController
   end
   
   def create
-    @favorite = current_user.send("favorite_#{params[:token]}s").create params[:favorite]
-    render json: { favorite_id: @favorite.id }
+    favorite = current_user.send("favorite_#{params[:token]}s").create params[:favorite]
+    render json: { favorite_id: favorite.id }
   end
   
   def destroy
-    @favorite = current_user.send("favorite_#{params[:token]}s").find(params[:id])
-    @favorite.destroy
-    render json: { sogoke_id: @favorite.send("#{prams[:token]}").id }
+    favorite = current_user.send("favorite_#{params[:token]}s").find(params[:id])
+    sogoke_id = favorite.send("#{params[:token]}").id
+    favorite.destroy
+    render json: { sogoke_id: sogoke_id }
   end
   
   protected
