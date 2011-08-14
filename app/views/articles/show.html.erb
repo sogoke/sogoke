@@ -11,10 +11,9 @@
 <%= render partial: 'favorites/favorites', locals: { sogoke: @article } %>
 
 
-<%= form_for @article do |f| %>
-	<%= f.fields_for :article_comments do |comment_fields| %>
-	    <%= comment_fields.text_field :content %>
-	<% end -%>
+<%= form_for @comment, url: article_comments_path(@article) do |f| %>
+	<%= f.text_field :content %>
+	<%= hidden_field_tag :token, "article" %>
 	<%= f.submit %>
 <% end -%>
 

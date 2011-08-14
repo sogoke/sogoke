@@ -43,7 +43,7 @@ describe StoresController do
 
       it "redirects to the store" do
         put :update, :id => current_store.id
-        response.should redirect_to(current_store)
+        response.should redirect_to(edit_store_path)
       end
     end
 
@@ -53,14 +53,10 @@ describe StoresController do
       before do
         controller.stub!(:current_store).and_return(current_store)
       end
-      
-      it "assigns the store as @store" do
-        put :update, :id => current_store.id, :store => {}
-      end
 
       it "re-renders the 'edit' template" do
-        put :update, :id => current_store.id, :store => {}
-        response.should render_template("edit")
+        put :update, :store => {}
+        response.should redirect_to(edit_store_path)
       end
     end
   end

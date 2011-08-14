@@ -17,6 +17,12 @@ describe ArticlesController do
 
   describe "GET show" do
     let(:article) { mock_model(Article, id: 5) }
+    let(:current_user) { mock_model( User, article_comments: [ mock_model(Comment)] ) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:article_comments, :new)
+    end
     
     it "assigns the requested article as @article" do
       Article.should_receive(:find).with("5").and_return(article)
