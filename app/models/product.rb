@@ -1,5 +1,6 @@
 class Product
   include Mongoid::Document
+  include Mongoid::Taggable
   
   field :name
   field :description

@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
-      render action: "new"
+      render :new
     end
   end
   
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     if @category.update_attributes(params[:category])
       redirect_to categories_path, notice: 'Category was successfully updated.'
     else
-      render action: "edit"
+      render :edit
     end
   end
   
