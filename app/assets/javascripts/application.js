@@ -4,3 +4,4 @@
 //= require rails.validations
 //= require articles
 //= require favorites
+//= require products

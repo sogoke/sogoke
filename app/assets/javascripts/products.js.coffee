@@ -1,0 +1,2 @@
+$ ->
+	$("#product_tags").tagsInput()
