@@ -1,5 +1,6 @@
 class Store
   include Mongoid::Document
+  include Mongoid::Taggable
   
   field :name
   field :announcement

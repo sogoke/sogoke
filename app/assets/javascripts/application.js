@@ -5,3 +5,4 @@
 //= require articles
 //= require favorites
 //= require products
+//= require stores
