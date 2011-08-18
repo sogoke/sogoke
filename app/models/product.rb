@@ -12,4 +12,6 @@ class Product
   validates :name, presence: true
   
   belongs_to :store
+  has_many :comments, :class_name => "ProductComment", :foreign_key => "sogoke_id"
+  has_many :favorite_products, :class_name => "FavoriteArticle", :foreign_key => "favorite_id"
 end

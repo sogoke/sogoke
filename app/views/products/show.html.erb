@@ -25,3 +25,13 @@
 </p>
 
 <%= render partial: 'favorites/favorites', locals: { sogoke: @product } %>
+
+<%= form_for @comment, url: product_comments_path(@product) do |f| %>
+	<%= f.text_field :content %>
+	<%= hidden_field_tag :token, "product" %>
+	<%= f.submit %>
+<% end -%>
+
+<% @product.comments.each do |comment| %>
+  <%= comment.user.name %>: <%= comment.content %>
+<% end -%>
