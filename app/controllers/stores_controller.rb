@@ -2,7 +2,7 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
-    @comment = current_user.store_comments.new
+    @comment = current_user.store_comments.new if current_user
   end
 
   def edit

@@ -8,11 +8,11 @@ describe StoresController do
     end
 
     it "routes to #edit" do
-      get("/users/store/edit").should route_to("stores#edit")
+      get("/stores/1/edit").should route_to("stores#edit", :id => "1")
     end
 
     it "routes to #update" do
-      put("/users/store").should route_to("stores#update")
+      put("/stores/1").should route_to("stores#update", :id => "1")
     end
   end
 end

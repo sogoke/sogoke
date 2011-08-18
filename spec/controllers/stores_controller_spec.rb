@@ -55,7 +55,7 @@ describe StoresController do
       end
 
       it "re-renders the 'edit' template" do
-        put :update, :store => {}
+        put :update, :id => current_store.id
         response.should redirect_to(edit_store_path)
       end
     end
