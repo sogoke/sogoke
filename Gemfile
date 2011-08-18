@@ -15,9 +15,11 @@ gem "mongoid_acts_as_tree"
 gem "mongoid_taggable"
 
 gem "aws-ses", :require => "aws/ses"
+gem "carrierwave"
 
 gem "redis"
 gem "redis-store", ">= 1.0.0.rc1"
+gem "resque"
 
 # Devise for auth
 gem "devise", ">= 1.4.2"
