@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    #Auther or the store/article/product owner could delete comments
   end
   
   protected
@@ -30,9 +31,20 @@ class CommentsController < ApplicationController
     @product = Product.find(params[:product_id])
     
     if @comment.save
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), notice: "Successfully."
     else
       render 'products/show'
+    end
+  end
+  
+  def create_store_comment
+    @comment = current_user.store_comments.new(params[:store_comment])
+    @store = Store.find(params[:store_id])
+    
+    if @comment.save
+      redirect_to store_path(@store), notice: "Successfully."
+    else
+      render 'stores/show'
     end
   end
 end

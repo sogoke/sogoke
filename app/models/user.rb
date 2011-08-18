@@ -24,6 +24,7 @@ class User
   has_many :favorite_articles, :class_name => "FavoriteArticle"
   has_many :article_comments, :class_name => "ArticleComment"
   has_many :product_comments, :class_name => "ProductComment"
+  has_many :store_comments, :class_name => "StoreComment"
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   

@@ -24,11 +24,11 @@ Sogoke::Application.routes.draw do
         put :binding
       end
     end
-    
-    resource :store, :only => [:edit, :update]
   end
   
-  resources :stores, :only => [:show]
+  resources :stores, :only => [:show, :edit, :update] do
+    resources :comments, :only => [:create, :destroy]
+  end
   resources :products do
     resources :comments, :only => [:create, :destroy]
   end
