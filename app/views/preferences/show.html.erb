@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mail on receiving message:</b>
+  <%= @preference.mail_on_receiving_message %>
+</p>
+
+<p>
+  <b>Mail on being followed:</b>
+  <%= @preference.mail_on_being_followed %>
+</p>
+
+<p>
+  <b>Message from everyone:</b>
+  <%= @preference.message_from_everyone %>
+</p>
+
+
+<%= link_to 'Edit', edit_preference_path(@preference) %> |
+<%= link_to 'Back', preferences_path %>

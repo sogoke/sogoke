@@ -3,6 +3,6 @@ class UserObserver < Mongoid::Observer
   
   def after_create(user)
     Store.create user_id: user.id, name: user.name
-    #pref
+    Preference.create user_id: user.id
   end
 end

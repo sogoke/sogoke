@@ -18,6 +18,7 @@ class User
   validates :email, presence: true, uniqueness: true, email_format: true
   
   has_one :store
+  has_one :preference
   has_many :articles
   has_many :posts
   has_many :favorite_stores, :class_name => "FavoriteStore"

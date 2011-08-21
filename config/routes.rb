@@ -11,21 +11,20 @@ Sogoke::Application.routes.draw do
       get :articles
     end
   end
-  
+    
   scope "/users" do
     resources :settings, :only => [] do
       collection do
         get :base
-        get :notification
         get :binding
 
         put :base
-        put :notification
         put :binding
       end
     end
   end
   
+  resource :preference, :only => [:edit, :update]
   resources :stores, :only => [:show, :edit, :update] do
     resources :comments, :only => [:create, :destroy]
   end
