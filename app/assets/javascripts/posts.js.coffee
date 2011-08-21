@@ -1,0 +1,2 @@
+$ ->
+	$("#post_tags").tagsInput()

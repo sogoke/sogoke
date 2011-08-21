@@ -1,7 +1,4 @@
 Sogoke::Application.routes.draw do
-
-  resources :posts
-
   root :to => "home#index"
   
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -37,6 +34,10 @@ Sogoke::Application.routes.draw do
   resources :articles, :except => :index do
     resources :comments, :only => [:create, :destroy]
   end
+  resources :posts do
+    resources :comments, :only => [:create, :destroy]
+  end
+  
   resources :favorites, :only => [:create, :destroy]
   
   resources :invitations, :only => [:show, :new, :create] do

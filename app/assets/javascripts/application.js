@@ -6,3 +6,4 @@
 //= require favorites
 //= require products
 //= require stores
+//= require posts

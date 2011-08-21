@@ -1,12 +1,8 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, validate: true) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+      <%= sogoke_error_message(@post) %>
       </ul>
     </div>
   <% end %>
@@ -20,8 +16,8 @@
     <%= f.text_field :content %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
   </div>
   <div class="actions">
     <%= f.submit %>
