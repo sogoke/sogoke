@@ -36,11 +36,13 @@ class User
   end
   
   def favorite_of?(something)
-    !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).count.zero?
+    !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).blank?
   end
   
-  def favorite(something)
-    send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).first
+  %w{mail_on_receiving_message mail_on_being_followed message_from_everyone}.each do |pref|
+    define_method "allow_#{pref}?" do
+      preference.send(pref)
+    end
   end
   
   protected
