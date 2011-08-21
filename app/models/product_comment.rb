@@ -1,3 +1,3 @@
 class ProductComment < Comment
-  belongs_to :product, :class_name => "Product", :foreign_key => "sogoke_id"
+  belongs_to :product, :foreign_key => "sogoke_id"
 end

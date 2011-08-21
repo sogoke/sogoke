@@ -1,5 +1,6 @@
 class Comment
   include Mongoid::Document
+  
   field :content
   field :sogoke_id
   field :user_id

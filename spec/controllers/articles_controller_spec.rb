@@ -36,7 +36,7 @@ describe ArticlesController do
 
   describe "GET new" do
     let(:article) { mock_model(Article) }
-    let(:current_user) { mock_model(Store) }
+    let(:current_user) { mock_model(User) }
     
     before do
       controller.stub!(:current_user).and_return(current_user)
@@ -52,7 +52,7 @@ describe ArticlesController do
 
   describe "GET edit" do
     let(:article) { mock_model(Article, id: 5) }
-    let(:current_user) { mock_model(Store) }
+    let(:current_user) { mock_model(User) }
     
     before do
       controller.stub!(:current_user).and_return(current_user)
@@ -72,7 +72,7 @@ describe ArticlesController do
   describe "POST create" do
     describe "with valid params" do
       let(:article) { mock_model(Article, id: 5, save: true) }
-      let(:current_user) { mock_model(Store) }
+      let(:current_user) { mock_model(User) }
 
       before do
         controller.stub!(:current_user).and_return(current_user)
@@ -93,7 +93,7 @@ describe ArticlesController do
 
     describe "with invalid params" do
       let(:article) { mock_model(Article, id: 5, save: false) }
-      let(:current_user) { mock_model(Store) }
+      let(:current_user) { mock_model(User) }
 
       before do
         controller.stub!(:current_user).and_return(current_user)
@@ -110,7 +110,7 @@ describe ArticlesController do
   describe "PUT update" do
     describe "with valid params" do
       let(:article) { mock_model(Article, id: 5, update_attributes: true) }
-      let(:current_user) { mock_model(Store) }
+      let(:current_user) { mock_model(User) }
 
       before do
         controller.stub!(:current_user).and_return(current_user)
@@ -135,7 +135,7 @@ describe ArticlesController do
 
     describe "with invalid params" do
       let(:article) { mock_model(Article, id: 5, update_attributes: false) }
-      let(:current_user) { mock_model(Store) }
+      let(:current_user) { mock_model(User) }
 
       before do
         controller.stub!(:current_user).and_return(current_user)
@@ -154,19 +154,20 @@ describe ArticlesController do
     end
   end
 
-#  describe "DELETE destroy" do
-#    it "destroys the requested article" do
-#      article = article.create! valid_attributes
-#      expect {
-#        delete :destroy, :id => article.id.to_s
-#      }.to change(article, :count).by(-1)
-#    end
-
-#    it "redirects to the articles list" do
-#      article = article.create! valid_attributes
-#      delete :destroy, :id => article.id.to_s
-#      response.should redirect_to(articles_url)
-#    end
-#  end
-  
+  describe "DELETE destroy" do
+    let(:article) { mock_model(Article, id: 5, destroy: true) }
+    let(:current_user) { mock_model(User) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:articles, :find).and_return(article)
+    end
+    
+    it "destroys the requested article" do
+      delete :destroy, :id => article.id
+      
+      assigns(:article).id.should eq(5)
+      response.should redirect_to(user_articles_path(current_user))
+    end
+  end
 end

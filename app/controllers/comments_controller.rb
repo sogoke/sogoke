@@ -26,6 +26,17 @@ class CommentsController < ApplicationController
     end
   end
   
+  def create_post_comment
+    @comment = current_user.post_comments.new(params[:post_comment])
+    @post = Post.find(params[:post_id])
+    
+    if @comment.save
+      redirect_to post_path(@post), notice: "Successfully."
+    else
+      render 'posts/show'
+    end
+  end
+  
   def create_product_comment
     @comment = current_user.product_comments.new(params[:product_comment])
     @product = Product.find(params[:product_id])
