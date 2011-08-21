@@ -8,6 +8,7 @@ Sogoke::Application.routes.draw do
     resource :favorites, :only => [] do
       get :products
       get :stores
+      get :articles
     end
   end
   
@@ -49,6 +50,7 @@ Sogoke::Application.routes.draw do
   
   resources :messages, :except => [:update, :edit]
   
+  # Admin here
   resources :categories
   resources :tags
   # The priority is based upon order of creation:

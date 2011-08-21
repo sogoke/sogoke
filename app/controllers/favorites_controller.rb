@@ -1,10 +1,13 @@
 class FavoritesController < ApplicationController
-  before_filter :find_user, :only => [:stores, :products]
+  before_filter :find_user, :only => [:stores, :products, :articles]
   
   def stores
   end
 
   def products
+  end
+  
+  def articles
   end
   
   def create
