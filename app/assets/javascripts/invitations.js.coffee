@@ -1,0 +1,2 @@
+$ ->
+	$("#friends_mails").tagsInput()

@@ -19,7 +19,7 @@ gem "carrierwave"
 
 gem "redis"
 gem "redis-store", ">= 1.0.0.rc1"
-gem "resque"
+gem "resque", ">= 1.18.2"
 
 # Devise for auth
 gem "devise", ">= 1.4.2"

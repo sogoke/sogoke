@@ -7,3 +7,4 @@
 //= require products
 //= require stores
 //= require posts
+//= require invitations
