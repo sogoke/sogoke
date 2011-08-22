@@ -16,6 +16,7 @@ class User
   has_one :preference
   has_many :articles
   has_many :posts
+  has_many :invitations
   has_many :favorite_stores, :class_name => "FavoriteStore"
   has_many :favorite_products, :class_name => "FavoriteProduct"
   has_many :favorite_articles, :class_name => "FavoriteArticle"
@@ -26,8 +27,12 @@ class User
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
-  def still_have_invitations_left
-    preference.invitations_left.zero?
+  def still_have_invitations_left(invitation_count = 0)
+    (preference.invitations_left - invitation_count) >= 0
+  end
+  
+  def consume_invitation(count = 1)
+    preference.update_attributes(invitations_left: (preference.invitations_left - count))
   end
   
   def favorite_of?(something)

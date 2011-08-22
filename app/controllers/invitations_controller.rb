@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
   
   def friends
     if request.post?
-      Invitation.send_invitations_to_friends(params[:words_from_friend], params[:friends_mails])
+      Invitation.send_invitations_to_friends(current_user, params[:words_from_friend], params[:friends_mails])
       redirect_to root_path, :notice => I18n.t("invite_friends_successful")
     else
       
