@@ -15,8 +15,10 @@
     <%= f.check_box :mail_on_being_followed %>
   </div>
   <div class="field">
-    <%= f.label :message_from_everyone %><br />
-    <%= f.check_box :message_from_everyone %>
+    <%= f.label :message_from_everyone %>
+    <%= f.radio_button :message_from_everyone, true %><br />
+	<%= f.label "Message from friends" %>
+	<%= f.radio_button :message_from_everyone, false %>
   </div>
   <div class="actions">
     <%= f.submit %>
