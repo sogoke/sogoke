@@ -84,12 +84,15 @@ describe InvitationsController do
   end
   
   describe "POST 'send_invitations_to_friends'" do
+    let(:current_user) { mock_model(User) }
+    
     before do
+      controller.stub!(:current_user).and_return(current_user)
       Invitation.stub!(:send_invitations_to_friends)
     end
     
     it "sends emails to friends" do
-      Invitation.should_receive(:send_invitations_to_friends).with("Welcome to SOGOKE", "nihilism.z@gmail.com")
+      Invitation.should_receive(:send_invitations_to_friends).with(current_user, "Welcome to SOGOKE", "nihilism.z@gmail.com")
       post :friends, words_from_friend: "Welcome to SOGOKE", friends_mails: "nihilism.z@gmail.com"
       response.should redirect_to(root_path)
     end
