@@ -1,7 +1,7 @@
 <h1>基础设置</h1>
 <%= render 'tab' %>
 
-<%= form_for current_user.preference, :url => preference_path, :html => { :method => :put } do |f| %>
+<%= form_for current_user.preference, :url => base_settings_path, :html => { :method => :put } do |f| %>
 	<%= f.label "邮箱" %>
 	<%= f.label current_user.email %> <%= link_to "修改", email_settings_path %>
 	<%= f.label "性别" %>

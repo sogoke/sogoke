@@ -9,15 +9,19 @@ describe SettingsController do
     end
   end
   
-  describe "Put 'base'" do    
+  describe "Put 'base'" do   
+    let(:current_user) { mock_model(User) }
+    let(:preference) { mock_model(Preference, update_attributes: true) }
+     
     before(:each) do
-      controller.stub!(:current_user).and_return(mock_model(User, :update_attributes => true))
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:preference).and_return(preference)
     end
     
     it "should receive update_attributes" do
-      controller.current_user.should_receive(:update_attributes).with({"gender" => "male"}).and_return(true)
+      preference.should_receive(:update_attributes).with({"gender" => "male"}).and_return(true)
       
-      put :base, :user => {"gender" => "male"}
+      put :base, :preference => {"gender" => "male"}
       
       flash[:notice].should eq(I18n.t("setting.base.successful"))
       
@@ -25,22 +29,13 @@ describe SettingsController do
     end
     
     it "updates with wrong parameters" do
-      controller.stub!(:current_user).and_return(mock_model(User, :update_attributes => false))
+      preference.stub(:update_attributes).and_return(false)
       
-      controller.current_user.should_receive(:update_attributes).with({"gender" => "male"}).and_return(false)
-      
-      put :base, :user => {"gender" => "male"}
+      put :base, :preference => {"gender" => "male"}
       
       flash[:notice].should eq(nil)
       
       response.should render_template(:base)
-    end
-  end
-
-  describe "GET 'notification'" do
-    it "should be successful" do
-      get 'notification'
-      response.should render_template("notification")
     end
   end
 
