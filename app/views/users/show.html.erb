@@ -1,0 +1,18 @@
+<html>
+	<head>
+	<title>用户</title>
+	</head>
+	<body>
+		<p><%= @user.name %></p>
+		<p><%= link_to @user.preference.website, @user.preference.website %></p>
+		<p><%= @user.preference.aboutme %></p>
+		<p>博文</p>
+		<% @user.articles.each do |article| %>
+			<p><%= link_to article.title, article_path(article) %></p>
+		<% end -%>
+		<p>作品</p>
+		<% @user.store.products.each do |product| %>
+			<p><%= link_to product.name, product_path(product) %></p>
+		<% end -%>
+	</body>
+</html>
