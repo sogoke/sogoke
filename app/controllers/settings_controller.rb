@@ -5,9 +5,6 @@ class SettingsController < ApplicationController
     flash[:notice] = I18n.t("setting.base.successful") if current_user.update_attributes(params[:user])  
   end
 
-  def notification
-  end
-
   def binding
   end
 
