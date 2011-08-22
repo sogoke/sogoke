@@ -1,16 +1,16 @@
 <h1>基础设置</h1>
 <%= render 'tab' %>
 
-<%= form_for current_user, :url => base_settings_path, :html => { :method => :put } do |f| %>
+<%= form_for current_user.preference, :url => preference_path, :html => { :method => :put } do |f| %>
 	<%= f.label "邮箱" %>
-	<%= f.text_field :email %>
+	<%= f.label current_user.email %> <%= link_to "修改", email_settings_path %>
 	<%= f.label "性别" %>
 	<%= f.radio_button :gender, "male" %>男
 	<%= f.radio_button :gender, "female" %>女
 	<%= f.label "个人网站" %>
 	<%= f.text_field :website %>
-	<%= f.label "签名" %>
-	<%= f.text_field :signature %>
+	<%= f.label "标签" %>
+	<%= f.text_field :tags %>
 	<%= f.label "关于我" %>
 	<%= f.text_area :aboutme %>
 	<%= f.submit %>

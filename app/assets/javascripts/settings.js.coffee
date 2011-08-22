@@ -1,0 +1,2 @@
+$ ->
+	$("#preference_tags").tagsInput()

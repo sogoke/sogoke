@@ -8,3 +8,4 @@
 //= require stores
 //= require posts
 //= require invitations
+//= require settings

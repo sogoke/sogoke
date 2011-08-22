@@ -8,11 +8,6 @@ class User
 
   field :name
   field :email
-  field :invitations_left, type: Integer, default: 5
-  field :gender
-  field :website
-  field :signature
-  field :aboutme
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, email_format: true
@@ -32,7 +27,7 @@ class User
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   
   def still_have_invitations_left
-    !invitations_left.zero?
+    preference.invitations_left.zero?
   end
   
   def favorite_of?(something)

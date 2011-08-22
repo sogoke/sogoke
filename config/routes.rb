@@ -17,6 +17,9 @@ Sogoke::Application.routes.draw do
       collection do
         get :base
         get :binding
+        
+        get :email
+        post :email
 
         put :base
         put :binding
