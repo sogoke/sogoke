@@ -39,10 +39,37 @@ describe FavoritesController do
   end
   
   describe "POST 'create'" do
-    it 'should be successful'
+    let(:current_user) { mock_model(User) }
+    let(:favorite) { mock_model(FavoriteProduct, id: 5) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:favorite_products, :create).and_return(favorite)
+    end
+    
+    describe "with valid params" do
+      it "creates a new Relation" do
+        current_user.should_receive(:favorite_products).once
+        post :create, { favorite: { favorite_id: 3 }, token: "product" }
+        response.body.should eq({ favorite_id: 5 }.to_json)
+      end
+    end
   end
   
   describe "DELETE 'create'" do
-    it 'should be successful'
-  end
+    let(:current_user) { mock_model(User) }
+    let(:product) { mock_model(Product, id: 6) }
+    let(:favorite) { mock_model(FavoriteProduct, id: 5, destroy: true, product: product) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:favorite_products, :find).and_return(favorite)
+      favorite.stub!(:product).and_return(product)
+    end
+    
+    it "destroys the requested relation" do
+      favorite.should_receive(:destroy)
+      delete :destroy, {:id => favorite.id, token: "product"}
+      response.body.should eq({ sogoke_id: 6 }.to_json)
+    end  end
 end

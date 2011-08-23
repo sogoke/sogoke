@@ -2,54 +2,38 @@ require 'spec_helper'
 
 describe RelationsController do
   describe "POST create" do
+    let(:current_user) { mock_model(User) }
+    let(:relation) { mock_model(UserRelation, id: 5) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:following_users, :create).and_return(relation)
+    end
+    
     describe "with valid params" do
       it "creates a new Relation" do
-        expect {
-          post :create, :relation => valid_attributes
-        }.to change(Relation, :count).by(1)
-      end
-
-      it "assigns a newly created relation as @relation" do
-        post :create, :relation => valid_attributes
-        assigns(:relation).should be_a(Relation)
-        assigns(:relation).should be_persisted
-      end
-
-      it "redirects to the created relation" do
-        post :create, :relation => valid_attributes
-        response.should redirect_to(Relation.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved relation as @relation" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Relation.any_instance.stub(:save).and_return(false)
-        post :create, :relation => {}
-        assigns(:relation).should be_a_new(Relation)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Relation.any_instance.stub(:save).and_return(false)
-        post :create, :relation => {}
-        response.should render_template("new")
+        current_user.should_receive(:following_users).once
+        post :create, { relation: { receiver_id: 3 }, token: "user" }
+        response.body.should eq({ relation_id: 5 }.to_json)
       end
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested relation" do
-      relation = Relation.create! valid_attributes
-      expect {
-        delete :destroy, :id => relation.id.to_s
-      }.to change(Relation, :count).by(-1)
+    let(:current_user) { mock_model(User) }
+    let(:following) { mock_model(User, id: 6) }
+    let(:relation) { mock_model(UserRelation, id: 5, destroy: true, followed_user: following) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:following_users, :find).and_return(relation)
+      relation.stub!(:following_user).and_return(following)
     end
-
-    it "redirects to the relations list" do
-      relation = Relation.create! valid_attributes
-      delete :destroy, :id => relation.id.to_s
-      response.should redirect_to(relations_url)
+    
+    it "destroys the requested relation" do
+      relation.should_receive(:destroy)
+      delete :destroy, {:id => relation.id, token: "user"}
+      response.body.should eq({ sogoke_id: 6 }.to_json)
     end
   end
 
