@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Category do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be wrong if name is blank" do
+    Category.new.should have(1).error_on(:name)
+  end
+  
+  it "should be wrong if name is taken" do
+    Factory.create :category
+    Category.new(name: "Wood").should have(1).error_on(:name)
+  end
 end
