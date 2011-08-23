@@ -13,6 +13,7 @@ gem "bson_ext", ">= 1.3.1"
 gem "mongoid", ">= 2.1.2"
 gem "mongoid_acts_as_tree"
 gem "mongoid_taggable"
+gem "sunspot_mongoid"
 
 gem "aws-ses", :require => "aws/ses"
 gem "carrierwave"
@@ -32,6 +33,7 @@ gem 'client_side_validations'
 
 # Gems for test
 gem "rspec-rails", ">= 2.6.1", :group => [:development, :test]
+gem "pry", :group => [:development, :test]
 group :test do
   gem "database_cleaner", ">= 0.6.7"
   gem "mongoid-rspec", ">= 1.4.4"
