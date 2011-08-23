@@ -9,3 +9,4 @@
 //= require posts
 //= require invitations
 //= require settings
+//= require relations

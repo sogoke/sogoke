@@ -26,6 +26,7 @@ class User
   has_many :post_comments, :class_name => "PostComment"
   has_many :messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
+  has_many :following_users, :class_name => "UserRelation"
   
   def still_have_invitations_left(invitation_count = 0)
     (preference.invitations_left - invitation_count) >= 0
@@ -37,6 +38,18 @@ class User
   
   def favorite_of?(something)
     !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).blank?
+  end
+  
+  def favorite(something)
+    send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).first
+  end
+  
+  def following?(something)
+    !send("following_#{something.class.to_s.downcase}s").where(receiver_id: something.id).blank?
+  end
+  
+  def follow(something)
+    send("following_#{something.class.to_s.downcase}s").where(receiver_id: something.id).first
   end
   
   %w{mail_on_receiving_message mail_on_being_followed message_from_everyone}.each do |pref|

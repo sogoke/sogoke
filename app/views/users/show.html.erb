@@ -3,6 +3,7 @@
 	<title>用户</title>
 	</head>
 	<body>
+		<%= render partial: 'relations/relations', locals: { sogoke: @user } %>
 		<p><%= @user.name %></p>
 		<p><%= link_to @user.preference.website, @user.preference.website %></p>
 		<p><%= @user.preference.aboutme %></p>

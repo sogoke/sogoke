@@ -27,6 +27,7 @@ Sogoke::Application.routes.draw do
     end
   end
   
+  resources :relations, :only => [:create, :destroy]
   resource :preference, :only => [:edit, :update]
   resources :stores, :only => [:show, :edit, :update] do
     resources :comments, :only => [:create, :destroy]

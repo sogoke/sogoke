@@ -1,0 +1,5 @@
+<% if current_user.following?(sogoke) %>
+	<%= link_to '取消关注', "javascript:void(0);", :id => "cancel_follow", :"data-id" => current_user.follow(sogoke).id, :"data-token" => sogoke.class.to_s.downcase %>
+<% else %>
+    <%= link_to '关注', "javascript:void(0);", :id => "follow", :"data-id" => sogoke.id, :"data-token" => sogoke.class.to_s.downcase %>
+<% end -%>
