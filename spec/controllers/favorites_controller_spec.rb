@@ -26,4 +26,23 @@ describe FavoritesController do
     end
   end
 
+  describe "GET 'articles'" do
+    it "should be successful" do
+      User.stub!(:find).and_return(mock_model(User))
+      
+      User.should_receive(:find).with("5")
+      
+      get 'articles', :user_id => 5
+      
+      response.should render_template(:articles)
+    end
+  end
+  
+  describe "POST 'create'" do
+    it 'should be successful'
+  end
+  
+  describe "DELETE 'create'" do
+    it 'should be successful'
+  end
 end
