@@ -6,7 +6,7 @@ class RelationsController < ApplicationController
   
   def destroy
     relation = current_user.send("following_#{params[:token]}s").find(params[:id])
-    sogoke_id = relation.send("followed_#{params[:token]}").id
+    sogoke_id = relation.send("following_#{params[:token]}").id
     relation.destroy
     render json: { sogoke_id: sogoke_id }
   end
