@@ -1,5 +1,5 @@
 class TagObserver < Mongoid::Observer
-  observe :article
+  observe :article, :preference, :product, :post, :store
   
   def after_save(record)
     record.tags_array.each do |tag|
