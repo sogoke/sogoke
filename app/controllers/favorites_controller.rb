@@ -17,9 +17,9 @@ class FavoritesController < ApplicationController
   
   def destroy
     favorite = current_user.send("favorite_#{params[:token]}s").find(params[:id])
-    sogoke_id = favorite.send("#{params[:token]}").id
+    about_id = favorite.send("#{params[:token]}").id
     favorite.destroy
-    render json: { sogoke_id: sogoke_id }
+    render json: { sogoke_id: about_id }
   end
   
   protected

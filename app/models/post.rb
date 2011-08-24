@@ -10,5 +10,5 @@ class Post
   validates :content, presence: true
   
   belongs_to :user
-  has_many :comments, :class_name => "PostComment", :foreign_key => "sogoke_id"
+  has_many :comments, :class_name => "PostComment", :foreign_key => "about_id"
 end

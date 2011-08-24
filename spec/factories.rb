@@ -12,6 +12,18 @@ Factory.define :following_user, class: User do |u|
   u.password 'follow'
 end
 
+Factory.define :first_user, class: User do |u|
+  u.name 'First User'
+  u.email 'first@test.com'
+  u.password 'first'
+end
+
+Factory.define :second_user, class: User do |u|
+  u.name 'Second User'
+  u.email 'second@test.com'
+  u.password 'second'
+end
+
 Factory.define :category do |c|
   c.name "Wood"
 end

@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   protected
   
   def filter_params
-    params["#{params[:token]}_comment"][:sogoke_id] = params["#{params[:token]}_id"]
+    params["#{params[:token]}_comment"][:about_id] = params["#{params[:token]}_id"]
   end
   
   def create_article_comment

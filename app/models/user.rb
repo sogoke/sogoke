@@ -20,6 +20,7 @@ class User
   # Notifications
   has_many :notifications
   has_many :user_relation_notifications, :class_name => "UserRelationNotification"
+  has_many :store_comment_notifications, :class_name => "StoreCommentNotification"
   # Favorite
   has_many :favorite_stores, :class_name => "FavoriteStore"
   has_many :favorite_products, :class_name => "FavoriteProduct"
@@ -45,19 +46,19 @@ class User
   end
   
   def favorite_of?(something)
-    !send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).blank?
+    !send("favorite_#{something.class.to_s.downcase}s").where(about_id: something.id).blank?
   end
   
   def favorite(something)
-    send("favorite_#{something.class.to_s.downcase}s").where(favorite_id: something.id).first
+    send("favorite_#{something.class.to_s.downcase}s").where(about_id: something.id).first
   end
   
   def following?(something)
-    !send("following_#{something.class.to_s.downcase}s").where(receiver_id: something.id).blank?
+    !send("following_#{something.class.to_s.downcase}s").where(with_id: something.id).blank?
   end
   
   def follow(something)
-    send("following_#{something.class.to_s.downcase}s").where(receiver_id: something.id).first
+    send("following_#{something.class.to_s.downcase}s").where(with_id: something.id).first
   end
   
   %w{mail_on_receiving_message mail_on_being_followed message_from_everyone}.each do |pref|

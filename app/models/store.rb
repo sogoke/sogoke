@@ -8,5 +8,5 @@ class Store
   
   belongs_to :user
   has_many :products
-  has_many :comments, :class_name => "StoreComment", :foreign_key => "sogoke_id"
+  has_many :comments, :class_name => "StoreComment", :foreign_key => "about_id"
 end
