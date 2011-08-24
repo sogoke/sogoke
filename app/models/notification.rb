@@ -8,6 +8,7 @@ class Notification
   field :number, type: Integer, default: 0
   
   validates :user_id, presence: true
+  validates :from_id, presence: true
   
   belongs_to :user
   belongs_to :from, :class_name => "User", :foreign_key => "from_id"
