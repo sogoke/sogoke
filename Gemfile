@@ -8,7 +8,7 @@ gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
-# Mongoid for database orm
+# Database, File System, Cache
 gem "bson_ext", ">= 1.3.1"
 gem "mongoid", ">= 2.1.2"
 gem "mongoid_acts_as_tree"
@@ -16,7 +16,11 @@ gem "mongoid_taggable"
 gem "sunspot_mongoid"
 
 gem "aws-ses", :require => "aws/ses"
-gem "carrierwave"
+
+gem 'fog'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem "redis"
 gem "redis-store", ">= 1.0.0.rc1"
