@@ -8,6 +8,7 @@ class Comment
   validates :content, presence: true
   validates :about_id, presence: true
   validates :user_id, presence: true
+  #from_id and user_id can't be the same
   
   belongs_to :user
   

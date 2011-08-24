@@ -21,6 +21,8 @@ class User
   has_many :notifications
   has_many :user_relation_notifications, :class_name => "UserRelationNotification"
   has_many :store_comment_notifications, :class_name => "StoreCommentNotification"
+  has_many :post_comment_notifications, :class_name => "PostCommentNotification"
+  has_many :article_comment_notifications, :class_name => "ArticleCommentNotification"
   # Favorite
   has_many :favorite_stores, :class_name => "FavoriteStore"
   has_many :favorite_products, :class_name => "FavoriteProduct"
