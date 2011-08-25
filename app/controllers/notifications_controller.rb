@@ -5,11 +5,13 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = current_user.notifications.find(params[:id])
+    notification = current_user.notifications.find(params[:id])
   end
   
   def destroy
     @notification = current_user.notifications.find(params[:id])
     @notification.destroy
+    
+    redirect_to notifications_path
   end
 end
