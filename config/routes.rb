@@ -1,6 +1,4 @@
 Sogoke::Application.routes.draw do
-  resources :notifications
-
   root :to => "home#index"
   
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -29,6 +27,7 @@ Sogoke::Application.routes.draw do
     end
   end
   
+  resources :notifications, :only => [:index, :show, :destroy]
   resources :relations, :only => [:create, :destroy]
   resource :preference, :only => [:edit, :update]
   resources :stores, :only => [:show, :edit, :update] do

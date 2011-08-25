@@ -7,4 +7,9 @@ class NotificationsController < ApplicationController
   def show
     @notification = current_user.notifications.find(params[:id])
   end
+  
+  def destroy
+    @notification = current_user.notifications.find(params[:id])
+    @notification.destroy
+  end
 end
