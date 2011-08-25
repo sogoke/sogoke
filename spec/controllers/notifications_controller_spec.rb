@@ -21,7 +21,7 @@ describe NotificationsController do
 
   describe "GET show" do
     let(:current_user) { mock_model(User) }
-    let(:notification) { mock_model(Notification, id: 5) }
+    let(:notification) { mock_model(Notification, id: 5, from_path: "/hello") }
     
     before do
       controller.stub!(:current_user).and_return(current_user)
@@ -30,8 +30,8 @@ describe NotificationsController do
     
     it "assigns the requested notification as @notification" do
       get :show, :id => notification.id
-      assigns(:notification).id.should eq(5)
-      response.should render_template(:show)
+      
+      response.should redirect_to(notification.from_path)
     end
   end
   
