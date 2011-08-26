@@ -3,6 +3,7 @@ require 'spec_helper'
 describe PreferencesController do
 
   describe "GET edit" do
+    login_user
     it "assigns the requested preference as @preference" do
       get :edit
       response.should render_template(:edit)
@@ -10,6 +11,7 @@ describe PreferencesController do
   end
 
   describe "PUT update" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:preference) { mock_model(Preference, update_attributes: true, id: 5) }
     

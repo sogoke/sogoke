@@ -1,4 +1,6 @@
 class RelationsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def create
     relation = current_user.send("following_#{params[:token]}s").create params[:relation]
     render json: { relation_id: relation.id }

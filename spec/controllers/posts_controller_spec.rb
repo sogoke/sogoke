@@ -37,6 +37,7 @@ describe PostsController do
   end
 
   describe "GET new" do
+    login_user
     let(:post) { mock_model(Post) }
     let(:current_user) { mock_model(User) }
     
@@ -53,6 +54,7 @@ describe PostsController do
   end
 
   describe "GET edit" do
+    login_user
     let(:post) { mock_model(Post, id: 5) }
     let(:current_user) { mock_model(Store) }
     
@@ -72,6 +74,7 @@ describe PostsController do
   end
 
   describe "POST create" do
+    login_user
     describe "with valid params" do
       let(:post_new) { mock_model(Post, id: 5, save: true) }
       let(:current_user) { mock_model(Store) }
@@ -110,6 +113,7 @@ describe PostsController do
   end
 
   describe "PUT update" do
+    login_user
     describe "with valid params" do
       let(:post) { mock_model(Post, id: 5, update_attributes: true) }
       let(:current_user) { mock_model(Store) }
@@ -157,6 +161,7 @@ describe PostsController do
   end
 
   describe "DELETE destroy" do
+    login_user
     let(:post) { mock_model(Post, id: 5, destroy: true) }
     let(:current_user) { mock_model(User) }
     

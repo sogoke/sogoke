@@ -20,6 +20,7 @@ describe StoresController do
   end
 
   describe "GET edit" do
+    login_user
     let(:current_store) { mock_model(Store, id: 5) }
     
     it "assigns the requested store as @store" do
@@ -29,6 +30,7 @@ describe StoresController do
   end
 
   describe "PUT update" do
+    login_user
     describe "with valid params" do
       let(:current_store) { mock_model(Store, id: 5, update_attributes: true)}
       

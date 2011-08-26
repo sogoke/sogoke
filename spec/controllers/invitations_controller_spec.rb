@@ -77,13 +77,15 @@ describe InvitationsController do
   end
   
   describe "GET 'friends'" do
+    login_user
     it "render send invitations to friends" do
       get :friends
       response.should render_template(:friends)
     end    
   end
   
-  describe "POST 'send_invitations_to_friends'" do
+  describe "POST 'friends'" do
+    login_user
     let(:current_user) { mock_model(User) }
     
     before do

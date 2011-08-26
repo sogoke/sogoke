@@ -3,6 +3,7 @@ require 'spec_helper'
 describe SettingsController do
 
   describe "GET 'base'" do
+    login_user
     it "should be successful" do
       get 'base'
       response.should render_template("base")
@@ -10,6 +11,7 @@ describe SettingsController do
   end
   
   describe "Put 'base'" do   
+    login_user
     let(:current_user) { mock_model(User) }
     let(:preference) { mock_model(Preference, update_attributes: true) }
      
@@ -40,6 +42,7 @@ describe SettingsController do
   end
 
   describe "GET 'binding'" do
+    login_user
     it "should be successful" do
       get 'binding'
       response.should render_template("binding")

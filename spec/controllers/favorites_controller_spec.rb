@@ -39,6 +39,7 @@ describe FavoritesController do
   end
   
   describe "POST 'create'" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:favorite) { mock_model(FavoriteProduct, id: 5) }
     
@@ -57,6 +58,7 @@ describe FavoritesController do
   end
   
   describe "DELETE 'create'" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:product) { mock_model(Product, id: 6) }
     let(:favorite) { mock_model(FavoriteProduct, id: 5, destroy: true, product: product) }

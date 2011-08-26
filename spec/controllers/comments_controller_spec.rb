@@ -3,6 +3,7 @@ require 'spec_helper'
 describe CommentsController do
 
   describe "POST 'create'" do
+    login_user
     let(:current_user) { mock_model(User, id: 5) }
     let(:comment) { mock_model(Comment, user_id: 5) }
     let(:article) { mock_model(Article, id: 3) }

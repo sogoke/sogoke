@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
   
   def index
     @articles = User.find(params[:user_id]).articles.all
@@ -6,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comment = current_user.article_comments.new
+    @comment = current_user.article_comments.new if current_user
   end
 
   def new

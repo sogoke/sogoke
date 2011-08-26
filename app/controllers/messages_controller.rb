@@ -24,8 +24,8 @@ class MessagesController < ApplicationController
     end
   end
 
-#  def destroy
-#    @message = current_user.received_messages.find(params[:id])
-#    @message.destroy
-#  end
+  def destroy
+    @message = current_user.received_messages.find(params[:id])
+    @message.destroy
+  end
 end

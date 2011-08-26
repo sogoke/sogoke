@@ -3,6 +3,7 @@ require 'spec_helper'
 describe NotificationsController do
 
   describe "GET index" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:notifications) { [mock_model(Notification), mock_model(Notification)] }
     
@@ -20,6 +21,7 @@ describe NotificationsController do
   end
 
   describe "GET show" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:notification) { mock_model(Notification, id: 5, from_path: "/hello") }
     
@@ -36,6 +38,7 @@ describe NotificationsController do
   end
   
   describe "DELETE 'destroy'" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:notification) { mock_model(Notification, id: 5, destroy: true) }
     

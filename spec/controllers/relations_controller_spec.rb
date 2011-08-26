@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe RelationsController do
   describe "POST create" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:relation) { mock_model(UserRelation, id: 5) }
     
@@ -20,6 +21,7 @@ describe RelationsController do
   end
 
   describe "DELETE destroy" do
+    login_user
     let(:current_user) { mock_model(User) }
     let(:following) { mock_model(User, id: 6) }
     let(:relation) { mock_model(UserRelation, id: 5, destroy: true, followed_user: following) }

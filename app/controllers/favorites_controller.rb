@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_filter :find_user, :only => [:stores, :products, :articles]
+  before_filter :authenticate_user!, :only => [:create, :destroy]
   
   def stores
   end

@@ -1,5 +1,6 @@
 require 'spec_helper'
 describe ProductsController do
+  login_user
 
   describe "GET index" do
     let(:products) { [ mock_model(Product), mock_model(Product) ] }

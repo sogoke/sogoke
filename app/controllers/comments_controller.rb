@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :filter_params, :only => :create
+  before_filter :authenticate_user!
   
   def create
     send "create_#{params[:token]}_comment"
