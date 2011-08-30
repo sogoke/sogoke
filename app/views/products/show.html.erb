@@ -35,3 +35,5 @@
 <% @product.comments.each do |comment| %>
   <%= comment.user.name %>: <%= comment.content %>
 <% end -%>
+
+<%= render 'shared/share' %>
