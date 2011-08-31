@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 # Default Rails gems
-gem 'rails', '3.1.0.rc8'
+gem 'rails', '3.1.0'
 
 # CSS and JavaScript gems
 gem 'sass-rails', "~> 3.1.0.rc"
