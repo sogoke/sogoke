@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @buzz.content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @buzz.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_buzz_path(@buzz) %> |
+<%= link_to 'Back', buzzs_path %>

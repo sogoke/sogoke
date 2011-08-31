@@ -27,6 +27,7 @@ Sogoke::Application.routes.draw do
     end
   end
   
+  resources :buzzs, :only => [:show, :create, :edit, :update, :destroy]
   resources :notifications, :only => [:index, :show, :destroy]
   resources :relations, :only => [:create, :destroy]
   resource :preference, :only => [:edit, :update]
