@@ -127,8 +127,8 @@ GEM
       mongoid (~> 2.0)
       rspec (~> 2)
     mongoid_acts_as_tree (0.1.8)
-      bson (>= 0.20.1)
       bson
+      bson (>= 0.20.1)
       bson_ext
       jeweler
       mongoid
