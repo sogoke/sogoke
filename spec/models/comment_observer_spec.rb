@@ -72,4 +72,28 @@ describe CommentObserver do
       user.article_comment_notifications.count.should eq(2)
     end 
   end
+  
+  describe "buzz comments after save" do
+    let(:observer) { CommentObserver.instance }
+    let(:user) { Factory.create(:user) }
+    let(:following_user) { Factory.create(:following_user) }
+    let(:buzz) { user.buzzs.create(content: "World") }
+    let(:comment) { following_user.buzz_comments.build(content: "World", about_id: buzz.id) }
+    let(:comment_second) { following_user.buzz_comments.build(content: "World", about_id: buzz.id) }
+    let(:comment_third) { following_user.buzz_comments.build(content: "World", about_id: buzz.id) }
+    
+
+    it "creates relation between user and post" do
+      observer.after_save(comment)
+      user.buzz_comment_notifications.count.should eq(1)
+      observer.after_save(comment_second)
+      user.buzz_comment_notifications.count.should eq(1)
+      user.buzz_comment_notifications.first.number.should eq(2)
+      
+      user.buzz_comment_notifications.first.update_attributes status: true
+      observer.after_save(comment_third)
+      user.buzz_comment_notifications.unread.count.should eq(1)
+      user.buzz_comment_notifications.count.should eq(2)
+    end 
+  end
 end

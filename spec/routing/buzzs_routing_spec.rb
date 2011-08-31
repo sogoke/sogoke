@@ -2,15 +2,6 @@ require "spec_helper"
 
 describe BuzzsController do
   describe "routing" do
-
-    it "routes to #index" do
-      get("/buzzs").should route_to("buzzs#index")
-    end
-
-    it "routes to #new" do
-      get("/buzzs/new").should route_to("buzzs#new")
-    end
-
     it "routes to #show" do
       get("/buzzs/1").should route_to("buzzs#show", :id => "1")
     end
