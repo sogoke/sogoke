@@ -1,5 +1,6 @@
 class Comment
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :content
   field :about_id

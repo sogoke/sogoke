@@ -1,5 +1,6 @@
 class Favorite
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :user_id
   field :about_id

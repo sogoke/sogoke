@@ -1,6 +1,7 @@
 class Product
   include Mongoid::Document
   include Mongoid::Taggable
+  include Mongoid::Timestamps
   
   field :name
   field :description

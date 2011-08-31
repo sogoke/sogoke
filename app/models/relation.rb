@@ -1,5 +1,6 @@
 class Relation
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :user_id
   field :with_id

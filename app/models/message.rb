@@ -1,5 +1,6 @@
 class Message
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   attr_accessor :receiver_name
   

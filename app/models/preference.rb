@@ -1,6 +1,7 @@
 class Preference
   include Mongoid::Document
   include Mongoid::Taggable
+  include Mongoid::Timestamps
   
   field :mail_on_receiving_message, type: Boolean, default: true
   field :mail_on_being_followed, type: Boolean, default: true
