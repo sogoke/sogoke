@@ -4,39 +4,31 @@ class BuzzsController < ApplicationController
   end
 
   def edit
-    @buzz = Buzz.find(params[:id])
+    @buzz = current_user.buzzs.find(params[:id])
   end
 
   def create
-    @buzz = Buzz.new(params[:buzz])
+    @buzz = current_user.buzzs.new(params[:buzz])
 
-    respond_to do |format|
-      if @buzz.save
-        format.html { redirect_to @buzz, notice: 'Buzz was successfully created.' }
-        format.json { render json: @buzz, status: :created, location: @buzz }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @buzz.errors, status: :unprocessable_entity }
-      end
+    if @buzz.save
+      redirect_to @buzz, notice: 'Buzz was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    @buzz = Buzz.find(params[:id])
+    @buzz = current_user.buzzs.find(params[:id])
 
-    respond_to do |format|
-      if @buzz.update_attributes(params[:buzz])
-        format.html { redirect_to @buzz, notice: 'Buzz was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @buzz.errors, status: :unprocessable_entity }
-      end
+    if @buzz.update_attributes(params[:buzz])
+      redirect_to @buzz, notice: 'Buzz was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
-    @buzz = Buzz.find(params[:id])
+    @buzz = current_user.buzzs.find(params[:id])
     @buzz.destroy
     
     redirect_to buzzs_url
