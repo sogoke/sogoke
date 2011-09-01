@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ActivitiesController do
-  describle "GET 'index'" do
+  describe "GET 'index'" do
     it "display user activities"
   end
   
