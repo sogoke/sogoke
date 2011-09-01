@@ -1,4 +1,6 @@
 class BuzzsController < ApplicationController
+  before_filter :authenticate_user!, except: [:show]
+  
   def show
     @buzz = Buzz.find(params[:id])
   end
