@@ -63,7 +63,7 @@ GEM
     coffee-script-source (1.1.2)
     daemons (1.1.4)
     database_cleaner (0.6.7)
-    devise (1.4.3)
+    devise (1.4.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -177,8 +177,9 @@ GEM
     redis (2.2.2)
     redis-namespace (1.0.3)
       redis (< 3.0.0)
-    redis-store (1.0.0.rc1)
-      redis (~> 2.2.0)
+    redis-store (1.0.0)
+      redis (>= 2.0.0)
+      redis (~> 2.2.1)
     resque (1.18.6)
       multi_json (~> 1.0)
       redis-namespace (~> 1.0.2)
@@ -282,6 +283,7 @@ DEPENDENCIES
   mongoid_taggable
   pry
   rails (= 3.1.0)
+  rake (= 0.9.2)
   redis
   redis-store (>= 1.0.0.rc1)
   resque (>= 1.18.2)

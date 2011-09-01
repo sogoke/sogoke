@@ -11,6 +11,7 @@ class Buzz
   belongs_to :user
   has_many :comments, :class_name => "BuzzComment", :foreign_key => "about_id"
   has_many :relationships, :class_name => "BuzzRelation", :foreign_key => "with_id"
+  has_one :activity, :class_name => "BuzzActivity", :foreign_key => "about_id"
   
   def build_relation(uid = user_id)
     BuzzRelation.create user_id: uid, with_id: id

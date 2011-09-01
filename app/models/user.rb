@@ -19,6 +19,7 @@ class User
   has_many :posts
   has_many :buzzs
   has_many :invitations
+  has_many :activities
   # Notifications
   has_many :notifications
   has_many :user_relation_notifications, :class_name => "UserRelationNotification"

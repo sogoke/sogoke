@@ -10,6 +10,7 @@ Sogoke::Application.routes.draw do
       get :stores
       get :articles
     end
+    resources :activities, :only => :index
   end
     
   scope "/users" do
@@ -27,6 +28,7 @@ Sogoke::Application.routes.draw do
     end
   end
   
+  resources :activities, :only => [:show, :destroy]
   resources :buzzs, :only => [:show, :create, :edit, :update, :destroy]
   resources :notifications, :only => [:index, :show, :destroy]
   resources :relations, :only => [:create, :destroy]
