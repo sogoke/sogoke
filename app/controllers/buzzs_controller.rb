@@ -15,7 +15,7 @@ class BuzzsController < ApplicationController
     if @buzz.save
       redirect_to root_path, notice: 'Buzz was successfully created.'
     else
-      render "/"
+      render "home/index"
     end
   end
 

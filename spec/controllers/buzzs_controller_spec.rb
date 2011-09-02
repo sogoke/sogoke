@@ -46,15 +46,15 @@ describe BuzzsController do
         post :create, buzz: { content: "World" }
         assigns(:buzz).should eq(buzz)
         
-        response.should redirect_to(buzz)
+        response.should redirect_to("/")
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved buzz as @buzz" do
-        buzz.stub(:save).and_return(false)
+        buzz.stub!(:save).and_return(false)
         post :create, :buzz => {}
-        response.should render_template("new")
+        response.should render_template("home/index")
       end
     end
   end
