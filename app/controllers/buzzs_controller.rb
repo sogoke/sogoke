@@ -13,9 +13,9 @@ class BuzzsController < ApplicationController
     @buzz = current_user.buzzs.new(params[:buzz])
 
     if @buzz.save
-      redirect_to @buzz, notice: 'Buzz was successfully created.'
+      redirect_to root_path, notice: 'Buzz was successfully created.'
     else
-      render :new
+      render "/"
     end
   end
 

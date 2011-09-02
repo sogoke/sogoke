@@ -9,3 +9,15 @@
 <%= link_to "博文", user_articles_path(current_user) %>
 <%= link_to "喜欢", products_user_favorites_path(current_user) %>
 <% end -%>
+
+<p>发布碎碎念</p>
+<% if current_user %>
+	<%= form_for @buzz do |f| %>
+		<%= f.text_field :content %>
+	<% end -%>
+<% end -%>
+
+<br />
+<% current_user.activities.each do |activity| %>
+	<%= render "activities/#{activity.class.name.underscore}", activity: activity %>
+<% end -%>
