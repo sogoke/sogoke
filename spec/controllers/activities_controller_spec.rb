@@ -2,29 +2,27 @@ require 'spec_helper'
 
 describe ActivitiesController do
   describe "GET 'index'" do
-    it "display user activities"
-  end
-  
-  describe "GET show" do
-    it "assigns the requested activity as @activity" do
-      activity = Activity.create! valid_attributes
-      get :show, :id => activity.id.to_s
-      assigns(:activity).should eq(activity)
+    let(:activities) { [mock_model(Activity), mock_model(Activity)] }
+    
+    it "display user activities" do
+      User.stub_chain(:find, :activities).and_return(activities)
+      get :index, :user_id => 5
+      response.should render_template(:index)
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested activity" do
-      activity = Activity.create! valid_attributes
-      expect {
-        delete :destroy, :id => activity.id.to_s
-      }.to change(Activity, :count).by(-1)
+    let(:current_user) { mock_model(User) }
+    let(:activity) { mock_model(Activity, :destroy => true, :id => 5) }
+    
+    before do
+      controller.stub!(:current_user).and_return(current_user)
+      current_user.stub_chain(:activities, :find).and_return(activity)
     end
-
+    
     it "redirects to the activities list" do
-      activity = Activity.create! valid_attributes
-      delete :destroy, :id => activity.id.to_s
-      response.should redirect_to(activities_url)
+      delete :destroy, :id => activity.id
+      response.should redirect_to(user_activities_path(current_user))
     end
   end
 

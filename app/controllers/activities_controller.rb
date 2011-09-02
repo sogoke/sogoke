@@ -4,9 +4,9 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
     @activity.destroy
     
-    redirect_to activities_url
+    redirect_to user_activities_path(current_user)
   end
 end
